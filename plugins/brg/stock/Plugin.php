@@ -17,7 +17,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Stock',
-            'description' => 'Plugin for stock',
+            'description' => 'No description provided yet...',
             'author'      => 'Brg',
             'icon'        => 'icon-leaf'
         ];
