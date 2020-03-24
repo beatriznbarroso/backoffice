@@ -15,7 +15,7 @@ columns:
     category:
         label: Category
         searchable: true
-    Cost:
+    cost:
         label: Cost
         searchable: true
     quantity_alert:

@@ -3,6 +3,30 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: Name
+        type: text
+        span: left
+    category:
+        label: Name
+        type: dropdown
+        span: right
+        options:
+            Fundição: Fundição
+    cost:
+        label: Cost
+        type: number
+        span: left
+    weight:
+        label: Weight
+        type: number
+        span: right
+    quantity_alert:
+        label: Quantity Alert
+        type: number
+        span: left
+    supplier_name:
+        label: Supplier Name
+        type: text
+        span: right
+
