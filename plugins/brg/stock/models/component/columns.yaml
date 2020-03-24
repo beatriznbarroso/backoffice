@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    name:
+        label: Name
+        searchable: true
+    reference:
+        label: Reference
+        searchable: true
+    category:
+        label: Category
+        searchable: true
+    Cost:
+        label: Cost
+        searchable: true
+    quantity_alert:
+        label: Quantity Alert
+        searchable: true
