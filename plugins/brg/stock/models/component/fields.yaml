@@ -3,6 +3,9 @@
 # ===================================
 
 fields:
+    photos_carousel:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/components/_field_image.htm
     name:
         label: Name
         type: text

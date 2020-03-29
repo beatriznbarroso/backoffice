@@ -28,20 +28,20 @@ class Plugin extends PluginBase
      *
      * @return void
      */
-    public function register()
-    {
+    // public function register()
+    // {
 
-    }
+    // }
 
     /**
      * Boot method, called right before the request route.
      *
      * @return array
      */
-    public function boot()
-    {
+    // public function boot()
+    // {
 
-    }
+    // }
 
     /**
      * Registers any front-end components implemented in this plugin.
