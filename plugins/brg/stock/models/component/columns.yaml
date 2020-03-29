@@ -3,9 +3,12 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
-        searchable: true
+    id:              
+        label: Id
+    photos:
+        label: Photo
+        type: partial
+        path: ~/plugins/brg/stock/controllers/components/_column_image.htm
     name:
         label: Name
         searchable: true
@@ -17,7 +20,5 @@ columns:
         searchable: true
     cost:
         label: Cost
-        searchable: true
     quantity_alert:
         label: Quantity Alert
-        searchable: true

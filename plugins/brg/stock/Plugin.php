@@ -91,8 +91,8 @@ class Plugin extends PluginBase
                 'sideMenu'=>[
                     'components'=>[
                         'label'       => 'Components',
-                        'icon'        => 'icon-cogs'                        ,
-                        'url'         => Backend::url('powerparity/crowdlending/components'),
+                        'icon'        => 'icon-cogs',
+                        'url'         => Backend::url('brg/stock/components'),
                         'permissions' => ['powerparity.crowdlending.manage_components']
                     ],
                 ],

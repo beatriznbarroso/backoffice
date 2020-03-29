@@ -61,7 +61,9 @@ class Component extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'products' => 'Brg\Stock\Product'
+    ];
     public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -70,5 +72,5 @@ class Component extends Model
     public $attachOne = [];
     public $attachMany = [
         'photos' => 'System\Models\File'
-    ];
+    ]; 
 }
