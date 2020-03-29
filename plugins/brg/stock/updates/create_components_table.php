@@ -8,16 +8,17 @@ class CreateComponentsTable extends Migration
 {
     public function up()
     {
-        Schema::create('powerparity_brg_components', function(Blueprint $table) {
+        Schema::create('brg_stock_components', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('profile_id')->nullable()->unsigned()->index();
-            $table->float('min_interest')->nullable();
-            $table->float('max_interest')->nullable();
-            $table->integer('min_term')->nullable();
-            $table->integer('max_term')->nullable();
-            $table->integer('balance_percentage')->nullable();
-            $table->boolean('status')->nullable();
+            $table->string('name')->nullable();
+            $table->string('category')->nullable();
+            $table->string('reference')->nullable();
+            $table->double('cost')->nullable();
+            $table->double('weight')->nullable();
+            $table->double('quantity_alert')->nullable();
+            $table->string('supplier_name')->nullable();
+            $table->boolean('is_recyclable')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,7 +26,7 @@ class CreateComponentsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('powerparity_crowdlending_auto_investments');
+        Schema::dropIfExists('brg_stock_components');
     }
 }
 

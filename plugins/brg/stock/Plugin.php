@@ -67,9 +67,9 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'brg.stock.some_permission' => [
+            'brg.stock.manage_components' => [
                 'tab' => 'Stock',
-                'label' => 'Some permission'
+                'label' => 'Manage Components'
             ],
         ];
     }
@@ -81,15 +81,21 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
-
         return [
             'stock' => [
                 'label'       => 'Stock',
-                'url'         => Backend::url('brg/stock/mycontroller'),
-                'icon'        => 'icon-leaf',
+                'url'         => Backend::url('brg/stock/components'),
+                'icon'        => 'icon-diamond',
                 'permissions' => ['brg.stock.*'],
                 'order'       => 500,
+                'sideMenu'=>[
+                    'components'=>[
+                        'label'       => 'Components',
+                        'icon'        => 'icon-cogs',
+                        'url'         => Backend::url('brg/stock/components'),
+                        'permissions' => ['powerparity.crowdlending.manage_components']
+                    ],
+                ],
             ],
         ];
     }
