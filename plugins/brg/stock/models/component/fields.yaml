@@ -1,0 +1,44 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    photos_carousel:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/components/_field_image.htm
+    name:
+        label: Name
+        type: text
+        span: left
+    category:
+        label: Category
+        type: dropdown
+        span: right
+        options:
+            Fundição: Fundição
+    cost:
+        label: Cost
+        type: number
+        span: left
+    weight:
+        label: Weight
+        type: number
+        span: right
+    quantity_alert:
+        label: Quantity Alert
+        type: number
+        span: left
+    supplier_name:
+        label: Supplier Name
+        type: text
+        span: right
+    photos: 
+        label: Images
+        span: left
+        type: fileupload
+        mode: file
+    recyclable:
+        label: Recyclable
+        type: switch
+        span: right
+        

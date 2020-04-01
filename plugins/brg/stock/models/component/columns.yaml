@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:              
+        label: Id
+    photos:
+        label: Photo
+        type: partial
+        path: ~/plugins/brg/stock/controllers/components/_column_image.htm
+    name:
+        label: Name
+        searchable: true
+    reference:
+        label: Reference
+        searchable: true
+    category:
+        label: Category
+        searchable: true
+    cost:
+        label: Cost
+    quantity_alert:
+        label: Quantity Alert

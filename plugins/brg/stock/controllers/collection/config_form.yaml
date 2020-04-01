@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Collection
+
+# Model Form Field configuration
+form: $/brg/stock/models/collection/fields.yaml
+
+# Model Class name
+modelClass: Brg\Stock\Models\Collection
+
+# Default redirect location
+defaultRedirect: brg/stock/collection
+
+# Create page
+create:
+    title: Create Collection
+    redirect: brg/stock/collection/update/:id
+    redirectClose: brg/stock/collection
+
+# Update page
+update:
+    title: Edit Collection
+    redirect: brg/stock/collection
+    redirectClose: brg/stock/collection
+
+# Preview page
+preview:
+    title: Preview Collection

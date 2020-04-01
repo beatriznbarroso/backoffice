@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Product
+
+# Model Form Field configuration
+form: $/brg/stock/models/product/fields.yaml
+
+# Model Class name
+modelClass: Brg\Stock\Models\Product
+
+# Default redirect location
+defaultRedirect: brg/stock/products
+
+# Create page
+create:
+    title: Create Product
+    redirect: brg/stock/products/update/:id
+    redirectClose: brg/stock/products
+
+# Update page
+update:
+    title: Edit Product
+    redirect: brg/stock/products
+    redirectClose: brg/stock/products
+
+# Preview page
+preview:
+    title: Preview Product
