@@ -6,25 +6,25 @@
 name: Component
 
 # Model Form Field configuration
-form: $/brg/stock/models/component/fields.yaml
+form: $/berguejewelry/stock/models/component/fields.yaml
 
 # Model Class name
-modelClass: Brg\Stock\Models\Component
+modelClass: BergueJewelry\Stock\Models\Component
 
 # Default redirect location
-defaultRedirect: brg/stock/components
+defaultRedirect: berguejewelry/stock/components
 
 # Create page
 create:
     title: Create Component
-    redirect: brg/stock/components/update/:id
-    redirectClose: brg/stock/components
+    redirect: berguejewelry/stock/components/update/:id
+    redirectClose: berguejewelry/stock/components
 
 # Update page
 update:
     title: Edit Component
-    redirect: brg/stock/components
-    redirectClose: brg/stock/components
+    redirect: berguejewelry/stock/components
+    redirectClose: berguejewelry/stock/components
 
 # Preview page
 preview:

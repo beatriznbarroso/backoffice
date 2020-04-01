@@ -1,4 +1,4 @@
-<?php namespace Brg\Stock\Models;
+<?php namespace BergueJewelry\Stock\Models;
 
 use Model;
 
@@ -12,7 +12,7 @@ class Component extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'brg_stock_components';
+    public $table = 'berguejewelry_stock_components';
 
     /**
      * @var array Guarded fields

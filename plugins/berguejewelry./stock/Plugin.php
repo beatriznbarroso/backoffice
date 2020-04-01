@@ -1,4 +1,4 @@
-<?php namespace Brg\Stock;
+<?php namespace BergueJewelry\Stock;
 
 use Backend;
 use System\Classes\PluginBase;
@@ -17,8 +17,8 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Stock',
-            'description' => 'No description provided yet...',
-            'author'      => 'Brg',
+            'description' => 'BackOffice for Stock Management',
+            'author'      => 'BergueJewelry',
             'icon'        => 'icon-leaf'
         ];
     }
@@ -67,9 +67,17 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'brg.stock.manage_components' => [
+            'berguejewelry.stock.manage_components' => [
                 'tab' => 'Stock',
                 'label' => 'Manage Components'
+            ],
+            'berguejewelry.stock.manage_products' => [
+                'tab' => 'Stock',
+                'label' => 'Manage Products'
+            ],
+            'berguejewelry.stock.manage_collections' => [
+                'tab' => 'Stock',
+                'label' => 'Manage Collections'
             ],
         ];
     }
@@ -84,16 +92,28 @@ class Plugin extends PluginBase
         return [
             'stock' => [
                 'label'       => 'Stock',
-                'url'         => Backend::url('brg/stock/components'),
+                'url'         => Backend::url('berguejewelry/stock/components'),
                 'icon'        => 'icon-diamond',
-                'permissions' => ['brg.stock.*'],
+                'permissions' => ['berguejewelry.stock.*'],
                 'order'       => 500,
                 'sideMenu'=>[
                     'components'=>[
                         'label'       => 'Components',
                         'icon'        => 'icon-cogs',
-                        'url'         => Backend::url('brg/stock/components'),
-                        'permissions' => ['powerparity.crowdlending.manage_components']
+                        'url'         => Backend::url('berguejewelry/stock/components'),
+                        'permissions' => ['berguejewelry.stock.manage_components']
+                    ],
+                    'products'=>[
+                        'label'       => 'Products',
+                        'icon'        => 'icon-cube',
+                        'url'         => Backend::url('berguejewelry/stock/products'),
+                        'permissions' => ['berguejewelry.stock.manage_products']
+                    ],
+                    'collections'=>[
+                        'label'       => 'Collections',
+                        'icon'        => 'icon-cubes',
+                        'url'         => Backend::url('berguejewelry/stock/collections'),
+                        'permissions' => ['berguejewelry.stock.manage_collections']
                     ],
                 ],
             ],

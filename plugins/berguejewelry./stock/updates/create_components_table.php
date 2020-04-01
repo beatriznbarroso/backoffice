@@ -1,4 +1,4 @@
-<?php namespace Brg\Stock\Updates;
+<?php namespace BergueJewelry\Stock\Updates;
 
 use Schema;
 use October\Rain\Database\Schema\Blueprint;
@@ -8,7 +8,7 @@ class CreateComponentsTable extends Migration
 {
     public function up()
     {
-        Schema::create('brg_stock_components', function(Blueprint $table) {
+        Schema::create('berguejewelry_stock_components', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name')->nullable();
@@ -26,7 +26,7 @@ class CreateComponentsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('brg_stock_components');
+        Schema::dropIfExists('berguejewelry_stock_components');
     }
 }
 

@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/brg/stock/models/component/columns.yaml
+list: $/berguejewelry/stock/models/product/columns.yaml
 
 # Model Class name
-modelClass: Brg\Stock\Models\Component
+modelClass: BergueJewelry\Stock\Models\Product
 
 # List Title
-title: Manage Components
+title: Manage Products
 
 # Link URL for each record
-recordUrl: brg/stock/components/update/:id
+recordUrl: berguejewelry/stock/products/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

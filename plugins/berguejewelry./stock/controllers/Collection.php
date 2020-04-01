@@ -1,12 +1,12 @@
-<?php namespace Brg\Stock\Controllers;
+<?php namespace BergueJewelry\Stock\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
 
 /**
- * Components Back-end Controller
+ * Collection Back-end Controller
  */
-class Components extends Controller
+class Collection extends Controller
 {
     public $implement = [
         'Backend.Behaviors.FormController',
@@ -16,12 +16,12 @@ class Components extends Controller
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 
-    public $requiredPermissions = ['brg.stock.manage_components'];
+    public $requiredPermissions = ['berguejewelry.stock.manage_collections'];
 
     public function __construct()
     {
         parent::__construct();
 
-        BackendMenu::setContext('Brg.Stock', 'stock', 'components');
+        BackendMenu::setContext('BergueJewelry.Stock', 'stock', 'collection');
     }
 }
