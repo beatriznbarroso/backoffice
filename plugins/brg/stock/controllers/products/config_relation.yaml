@@ -9,3 +9,12 @@ components:
   manage:
     form: $/brg/stock/models/component/fields.yaml
     list: $/brg/stock/models/component/columns.yaml
+
+collection:
+  label: Collection
+  view:
+    form: $/brg/stock/models/collection/fields.yaml
+    toolbarButtons: update|link
+  manage:
+    form: $/brg/stock/models/collection/fields.yaml
+    list: $/brg/stock/models/collection/columns.yaml

@@ -39,6 +39,7 @@ fields:
         type: switch
         span: right
         comment: Stop Product sell so recyclable components will go back into stock
-    # collection:
-    #     label: Collection
-    #     type: partial
+    collection:
+        label: Collection
+        type: partial
+        span: full

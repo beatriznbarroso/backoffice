@@ -62,12 +62,12 @@ class Collection extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'products' => 'Brg\Stock\Product'
+        'products' => 'Brg\Stock\Models\Product'
     ];
     public $hasManyThrough = [
         'components' => [
             'Brg\Stock\Component',
-            'through' => 'Brg\Stock\Product'
+            'through' => 'Brg\Stock\Models\Product'
         ],
     ];
     public $belongsTo = [];

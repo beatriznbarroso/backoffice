@@ -63,7 +63,7 @@ class Product extends Model
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [
-        'collection' => 'Brg\Stock\Model\Collection'
+        'collection' => 'Brg\Stock\Models\Collection'
     ];
     public $belongsToMany = [
         'components' => ['Brg\Stock\Models\Component', 'table' => 'brg_stock_product_components', 'timestamps' => true]
