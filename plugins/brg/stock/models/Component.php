@@ -61,11 +61,11 @@ class Component extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'products' => 'Brg\Stock\Product'
-    ];
+    public $hasMany = [];
     public $belongsTo = [];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'products' => ['Brg\Stock\Models\Product', 'table' => 'brg_stock_product_components', 'timestamps' => true]
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];

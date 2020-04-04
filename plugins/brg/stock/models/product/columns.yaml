@@ -3,9 +3,25 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
-        searchable: false
     name:
         label: Name
         searchable: true
+    product_photos:
+        label: Photo
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_column_image.htm
+    code:
+        label: Code
+        searchable: true
+    cost:
+        label: Product Cost (Pre Sell)
+        searchable: false
+    price:
+        label: Product Price
+        searchable: false
+    quantity:
+        label: Quantity
+        searchable: false
+    status:
+        label: Status
+        searchable: false

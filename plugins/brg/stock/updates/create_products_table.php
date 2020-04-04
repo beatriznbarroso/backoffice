@@ -14,7 +14,9 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->bigInteger('collection_id')->unsigned()->nullable();
-            $table->double('pre_sell_cost')->nullable();
+            $table->double('cost')->nullable();
+            $table->double('price')->nullable();
+            $table->double('quantity')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('stop_selling')->default(false);
             $table->timestamps();

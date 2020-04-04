@@ -3,6 +3,42 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    photos_carousel:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_field_image.htm
+    name:
+        label: Name
+        type: text
+        span: left
+    code:
+        label: Code
+        type: text
+        span: right
+    components:
+        label: Components
+        type: partial
+        span: full
+    cost:
+        label: Product Cost
+        type: number
+        span: left
+    price:
+        label: Product Price
+        type: number
+        span: right
+    quantity:
+        label: Quantity
+        type: number
+        span: left
+    status:
+        label: Status
+        type: switch
+        span: left
+    stop_selling:
+        label: Stop Product Sell
+        type: switch
+        span: right
+        comment: Stop Product sell so recyclable components will go back into stock
+    # collection:
+    #     label: Collection
+    #     type: partial

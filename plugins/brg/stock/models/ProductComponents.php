@@ -3,16 +3,16 @@
 use Model;
 
 /**
- * Product Model
+ * ProductComponents Model
  */
-class Product extends Model
+class ProductComponents extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'brg_stock_products';
+    public $table = 'brg_stock_product_components';
 
     /**
      * @var array Guarded fields
@@ -62,17 +62,11 @@ class Product extends Model
      */
     public $hasOne = [];
     public $hasMany = [];
-    public $belongsTo = [
-        'collection' => 'Brg\Stock\Model\Collection'
-    ];
-    public $belongsToMany = [
-        'components' => ['Brg\Stock\Models\Component', 'table' => 'brg_stock_product_components', 'timestamps' => true]
-    ];
+    public $belongsTo = [];
+    public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
-    public $attachMany = [
-        'product_photos' => 'System\Models\File'
-    ];
+    public $attachMany = [];
 }
