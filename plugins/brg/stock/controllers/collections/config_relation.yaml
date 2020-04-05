@@ -1,0 +1,20 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+components:
+  label: Components
+  view:
+    list: $/brg/stock/models/component/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    form: $/brg/stock/models/component/fields.yaml
+    list: $/brg/stock/models/component/columns.yaml
+
+products:
+  label: Products
+  view:
+    list: $/brg/stock/models/product/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    form: $/brg/stock/models/product/fields.yaml
+    list: $/brg/stock/models/product/columns.yaml

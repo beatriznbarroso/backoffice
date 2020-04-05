@@ -5,4 +5,16 @@
 columns:
     id:
         label: ID
+        searchable: false
+    name:
+        label: Name
+        searchable: true
+    status:
+        label: Status
+        searchable: false
+    start_date:
+        label: Start Date
+        searchable: true
+    end_date:
+        label: End Date
         searchable: true

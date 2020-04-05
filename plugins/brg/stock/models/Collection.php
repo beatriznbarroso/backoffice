@@ -66,7 +66,6 @@ class Collection extends Model
     ];
     public $hasManyThrough = [
         'components' => [
-            'Brg\Stock\Component',
             'through' => 'Brg\Stock\Models\Product'
         ],
     ];

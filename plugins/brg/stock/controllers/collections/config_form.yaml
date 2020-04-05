@@ -12,19 +12,19 @@ form: $/brg/stock/models/collection/fields.yaml
 modelClass: Brg\Stock\Models\Collection
 
 # Default redirect location
-defaultRedirect: brg/stock/collection
+defaultRedirect: brg/stock/collections
 
 # Create page
 create:
     title: Create Collection
-    redirect: brg/stock/collection/update/:id
-    redirectClose: brg/stock/collection
+    redirect: brg/stock/collections/update/:id
+    redirectClose: brg/stock/collections
 
 # Update page
 update:
     title: Edit Collection
-    redirect: brg/stock/collection
-    redirectClose: brg/stock/collection
+    redirect: brg/stock/collections
+    redirectClose: brg/stock/collections
 
 # Preview page
 preview:

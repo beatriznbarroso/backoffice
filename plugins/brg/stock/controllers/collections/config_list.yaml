@@ -12,7 +12,7 @@ modelClass: Brg\Stock\Models\Collection
 title: Manage Collections
 
 # Link URL for each record
-recordUrl: brg/stock/collection/update/:id
+recordUrl: brg/stock/collections/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

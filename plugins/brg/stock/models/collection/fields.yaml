@@ -2,7 +2,34 @@
 #  Form Field Definitions
 # ===================================
 
-fields:
-    id:
-        label: ID
-        disabled: true
+tabs:
+    stretch: true
+    defaultTab: Collection
+    icons:
+        Products:  icon-cube
+        Components: icon-cogs
+    fields:
+        name:
+            label: Name
+            type: text
+            span: left
+        start_date:
+            label: Start Date
+            type: text
+            span: left
+        end_date:
+            label: End Date
+            type: text
+            span: right
+        status:
+            label: Status
+            type: switch
+            span: left
+        
+        products:
+            type: partial
+            tab: Products
+
+        components:
+            type: partial
+            tab: Components 
