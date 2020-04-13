@@ -1,0 +1,32 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">Add the number of times this component has been added to this product</h4>
+    </div>
+  
+    <div class="modal-body" >
+      <form class="form-elements" role="form" >
+        <div class="loading-indicator-container indicator-center modal-body">
+  
+          <div class="form-row span-full">
+              <label>Has this component been added to this product more than once?</label>
+              <input type="number" class="form-control" name="component_number" id="component_number" required/>
+          </div>
+  
+  
+          <div class="modal-footer" style="margin-top: 25px;">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button
+              data-request-confirm="Are you sure? This will subtract from this component's quantity"
+              data-request="onAddComponentQuantity"
+              data-request-data="component_id: <?= $component_id ?>"
+              data-load-indicator="Generating..."
+              class="btn btn-primary">
+                Add 
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+  

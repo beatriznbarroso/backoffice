@@ -4,9 +4,9 @@
 components:
   label: Components
   view:
-    list: $/brg/stock/models/component/columns.yaml
-    toolbarButtons: add|create|remove|create
+    list: $/brg/stock/models/component/columns_relation.yaml
+    toolbarButtons: add|create|remove|delete
   manage:
     form: $/brg/stock/models/component/fields.yaml
-    list: $/brg/stock/models/component/columns.yaml
+    list: $/brg/stock/models/component/columns_relation.yaml
 

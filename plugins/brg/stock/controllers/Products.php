@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Brg\Stock\Models\Component as ComponentModel;
 
 /**
  * Products Back-end Controller
@@ -25,5 +26,33 @@ class Products extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Brg.Stock', 'stock', 'products');
+    }
+
+    public function onGenerateComponentQuantityForm() {
+        $component_id = post('component_id');
+        $component = ComponentModel::find($component_id);
+
+        if($component){
+            return ['result'=>$this->makePartial('form_generate_component_quantity_form', ['component_id'=>$component_id])];
+        }
+        else {
+            \Flash::error('Component not found');
+        }
+        return \Redirect::refresh();
+    }
+
+    public function onAddComponentQuantity() {
+        $data = \Input::all();
+
+        $component = ComponentModel::find(intval($data['component_id']));
+
+        if($component && $data['component_number']){
+            $component->quantity - $data['component_number'];
+            $component->save();
+        }
+        else{
+            \Flash::error('Component not found or quantity input is empty');
+        }
+        return \Redirect::refresh();
     }
 }

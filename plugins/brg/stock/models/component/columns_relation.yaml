@@ -1,0 +1,31 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Name
+        searchable: true
+    photos:
+        label: Photo
+        type: partial
+        path: ~/plugins/brg/stock/controllers/components/_column_image.htm
+    reference:
+        label: Reference
+        searchable: true
+    category:
+        label: Category
+        searchable: true
+    cost:
+        label: Cost
+        searchable: false
+    quantity:
+        label: Quantity
+        searchable: false
+    quantity_alert:
+        label: Quantity Alert
+        searchable: false
+    quantity_button:
+        label: Number of Components
+        type: partial
+        path: ~/plugins/brg/stock/models/component/_quantity_button.htm
