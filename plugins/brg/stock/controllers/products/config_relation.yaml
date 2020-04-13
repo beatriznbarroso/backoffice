@@ -5,16 +5,8 @@ components:
   label: Components
   view:
     list: $/brg/stock/models/component/columns.yaml
-    toolbarButtons: add|remove|create|delete
+    toolbarButtons: add|create|remove|create
   manage:
     form: $/brg/stock/models/component/fields.yaml
     list: $/brg/stock/models/component/columns.yaml
 
-collection:
-  label: Collection
-  view:
-    form: $/brg/stock/models/collection/fields.yaml
-    toolbarButtons: update|link
-  manage:
-    form: $/brg/stock/models/collection/fields.yaml
-    list: $/brg/stock/models/collection/columns.yaml

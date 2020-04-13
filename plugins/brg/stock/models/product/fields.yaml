@@ -10,14 +10,12 @@ fields:
         label: Name
         type: text
         span: left
+        required: true
     code:
         label: Code
         type: text
         span: right
-    components:
-        label: Components
-        type: partial
-        span: full
+        required: true
     cost:
         label: Product Cost
         type: number
@@ -30,7 +28,18 @@ fields:
         label: Quantity
         type: number
         span: left
-    status:
+        required: true
+    quantity_alert:
+        label: Quantity Alert
+        type: number
+        span: right
+        required: true
+    silver_quantity:
+        label: Silver Quantity
+        type: number
+        span: left
+        comment: The quantity(in grams) of silver used for this product
+    production_status:
         label: Status
         type: switch
         span: left
@@ -39,7 +48,12 @@ fields:
         type: switch
         span: right
         comment: Stop Product sell so recyclable components will go back into stock
-    collection:
-        label: Collection
+
+    component_section:
+        label: Components
+        type: section
+    components:
+        label: Components
         type: partial
         span: full
+

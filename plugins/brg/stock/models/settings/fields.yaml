@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    system_section:
+        label: Stock Settings
+        type: section
+    silver_price:
+        label: Silver Price
+        comment: The current silver price - per gram
+        span: left
+        required: true
+    case_price:
+        label: Case Price
+        comment: The jewel case price
+        span: right
+        required: true
+    bag_price:
+        label: Bag Price
+        comment: The current bag price 
+        span: left
+        required: true

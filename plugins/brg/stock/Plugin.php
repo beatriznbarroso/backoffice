@@ -24,40 +24,6 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Register method, called when the plugin is first registered.
-     *
-     * @return void
-     */
-    // public function register()
-    // {
-
-    // }
-
-    /**
-     * Boot method, called right before the request route.
-     *
-     * @return array
-     */
-    // public function boot()
-    // {
-
-    // }
-
-    /**
-     * Registers any front-end components implemented in this plugin.
-     *
-     * @return array
-     */
-    public function registerComponents()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'Brg\Stock\Components\MyComponent' => 'myComponent',
-        ];
-    }
-
-    /**
      * Registers any back-end permissions used by this plugin.
      *
      * @return array
@@ -117,6 +83,24 @@ class Plugin extends PluginBase
                     ],
                 ],
             ],
+        ];
+    }
+
+    /**
+     * Register settings models
+     */
+    public function registerSettings()
+    {
+        return [
+            'Settings' => [
+                'label'       => 'Brg Settings',
+                'icon'        => 'icon-sliders',
+                'description' => 'General Bergue Configurations.',
+                'class'       => 'Brg\Stock\Models\Settings',
+                'order'       => 100,
+                'keywords'    => 'stock general settings',
+                'permissions' => ['brg.stock.manage_brg_settings']
+            ]
         ];
     }
 }

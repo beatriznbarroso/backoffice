@@ -10,10 +10,12 @@ fields:
         label: Name
         type: text
         span: left
+        required: true
     category:
         label: Category
         type: dropdown
         span: right
+        required: true
         options:
             Fundição: Fundição
     cost:
@@ -24,21 +26,28 @@ fields:
         label: Weight
         type: number
         span: right
-    quantity_alert:
-        label: Quantity Alert
-        type: number
-        span: left
+        required: true
     supplier_name:
         label: Supplier Name
         type: text
+        span: left
+    quantity:
+        label: Quantity 
+        type: number
+        span: left
+        required: true
+    quantity_alert:
+        label: Quantity Alert
+        type: number
         span: right
+        required: true
     photos: 
         label: Images
         span: left
         type: fileupload
         mode: file
-    recyclable:
+    is_recyclable:
         label: Recyclable
         type: switch
         span: right
-        
+        required: true

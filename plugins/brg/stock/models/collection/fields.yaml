@@ -6,6 +6,7 @@ tabs:
     stretch: true
     defaultTab: Collection
     icons:
+        Collection: icon-cubes
         Products:  icon-cube
         Components: icon-cogs
     fields:
@@ -14,7 +15,7 @@ tabs:
             type: text
             span: left
         start_date:
-            label: Start Date
+            label: Start Date    
             type: text
             span: left
         end_date:
@@ -30,6 +31,10 @@ tabs:
             type: partial
             tab: Products
 
-        components:
+        products:
             type: partial
-            tab: Components 
+            tab: Products 
+        
+        # components:
+        #     type: partial
+        #     tab: Compox ~| nents 

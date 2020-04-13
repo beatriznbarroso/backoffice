@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->double('cost')->nullable();
             $table->double('price')->nullable();
             $table->double('quantity')->nullable();
-            $table->boolean('status')->default(false);
+            $table->double('quantity_alert')->nullable();
+            $table->double('silver_quantity')->nullable();
+            $table->boolean('production_status')->default(false);
             $table->boolean('stop_selling')->default(false);
             $table->timestamps();
             $table->softDeletes();

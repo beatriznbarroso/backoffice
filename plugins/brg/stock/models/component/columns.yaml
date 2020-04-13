@@ -19,6 +19,9 @@ columns:
     cost:
         label: Cost
         searchable: false
+    quantity:
+        label: Quantity
+        searchable: false
     quantity_alert:
         label: Quantity Alert
         searchable: false
