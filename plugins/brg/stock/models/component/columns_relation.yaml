@@ -29,3 +29,4 @@ columns:
         label: Number of Components
         type: partial
         path: ~/plugins/brg/stock/models/component/_quantity_button.htm
+        clickable: false

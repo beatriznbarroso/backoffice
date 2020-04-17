@@ -33,7 +33,7 @@ class Products extends Controller
         $component = ComponentModel::find($component_id);
 
         if($component){
-            return ['result'=>$this->makePartial('form_generate_component_quantity_form', ['component_id'=>$component_id])];
+            return ['result'=>$this->makePartial('form_generate_component_quantity', ['component_id'=>$component_id])];
         }
         else {
             \Flash::error('Component not found');

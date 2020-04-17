@@ -24,4 +24,17 @@ class Components extends Controller
 
         BackendMenu::setContext('Brg.Stock', 'stock', 'components');
     }
+
+    public function onGenerateComponentQuantityForm() {
+        $component_id = post('component_id');
+        $component = ComponentModel::find($component_id);
+
+        if($component){
+            return ['result'=>$this->makePartial('form_generate_component_quantity_form', ['component_id'=>$component_id])];
+        }
+        else {
+            \Flash::error('Component not found');
+        }
+        return \Redirect::refresh();
+    }
 }
