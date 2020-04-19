@@ -75,13 +75,4 @@ class Product extends Model
     public $attachMany = [
         'product_photos' => 'System\Models\File'
     ];
-
-    public function afterSave() {
-        $components = $this->components;
-
-        foreach($components as $component){
-            $component->quantity = $component->quantity - 1 ;
-            $component->save();
-        }    
-    }
 }

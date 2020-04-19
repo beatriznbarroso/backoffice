@@ -55,4 +55,16 @@ class Products extends Controller
         }
         return \Redirect::refresh();
     }
+
+
+    // Subtracting quantity to components after adding components to products 
+    // Need to do it here because of many to many relationship
+    public function formAfterSave($model) {
+        $components = $model->components;
+
+        foreach($components as $component){
+            $component->quantity -= 1;
+            $component->save();
+        }    
+    }
 }

@@ -8,7 +8,6 @@ tabs:
     icons:
         Collection: icon-cubes
         Products:  icon-cube
-        Components: icon-cogs
     fields:
         name:
             label: Name
@@ -16,11 +15,11 @@ tabs:
             span: left
         start_date:
             label: Start Date    
-            type: text
+            type: datepicker
             span: left
         end_date:
             label: End Date
-            type: text
+            type: datepicker
             span: right
         status:
             label: Status
@@ -35,6 +34,3 @@ tabs:
             type: partial
             tab: Products 
         
-        # components:
-        #     type: partial
-        #     tab: Compox ~| nents 

@@ -31,6 +31,10 @@ fields:
         label: Supplier Name
         type: text
         span: left
+    reference:
+        label: Reference Code
+        type: text
+        span: right
     quantity:
         label: Quantity 
         type: number
