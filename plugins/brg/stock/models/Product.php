@@ -1,6 +1,7 @@
 <?php namespace Brg\Stock\Models;
 
 use Model;
+use Brg\Stock\Models\Settings as SettingsModel;
 
 /**
  * Product Model
@@ -75,4 +76,16 @@ class Product extends Model
     public $attachMany = [
         'product_photos' => 'System\Models\File'
     ];
-}
+
+
+    public function beforeSave() {
+        if($this->production_status == true) {
+            $silver_price = SettingsModel::get('silver_price');
+            $bag_price = SettingsModel::get('bag_price');
+            $case_price = SettingsModel::get('case_price');
+
+            $this->price = $this->cost + $bag_price + $case_price + $this->labour_cost;
+        }
+    }
+
+} 
