@@ -13,15 +13,12 @@ columns:
     code:
         label: Code
         searchable: true
-    cost:
-        label: Product Cost (Pre Sell)
-        searchable: false
     price:
-        label: Product Price
+        label: Product Price (In Cents)
         searchable: false
     quantity:
         label: Quantity
         searchable: false
-    status:
-        label: Status
+    production_status:
+        label: Production Status
         searchable: false

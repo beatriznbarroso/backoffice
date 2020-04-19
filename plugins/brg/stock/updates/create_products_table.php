@@ -14,7 +14,6 @@ class CreateProductsTable extends Migration
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->bigInteger('collection_id')->unsigned()->nullable();
-            $table->double('cost')->nullable();
             $table->double('price')->nullable();
             $table->double('quantity')->nullable();
             $table->double('quantity_alert')->nullable();

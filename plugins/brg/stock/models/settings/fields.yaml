@@ -8,16 +8,16 @@ fields:
         type: section
     silver_price:
         label: Silver Price
-        comment: The current silver price - per gram
+        comment: The current silver price - per gram in cents
         span: left
         required: true
     case_price:
         label: Case Price
-        comment: The jewel case price
+        comment: The jewel case price - in cents
         span: right
         required: true
     bag_price:
         label: Bag Price
-        comment: The current bag price 
+        comment: The current bag price - in cents
         span: left
         required: true

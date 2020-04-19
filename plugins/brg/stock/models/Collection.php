@@ -83,7 +83,7 @@ class Collection extends Model
         $products = $this->products;
 
         foreach($products as $product) {
-            $product->quantity = 0 ?  $product->quantity = 0 : $product->quantity -= 1;
+            $product->quantity = 0 ?  $product->quantity = 0 : $product->quantity = $product->quantity - 1;
             $product->save();
         }
     }
