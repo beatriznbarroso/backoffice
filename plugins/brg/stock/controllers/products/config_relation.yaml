@@ -9,4 +9,6 @@ components:
   manage:
     form: $/brg/stock/models/component/fields.yaml
     list: $/brg/stock/models/component/columns_relation.yaml
+  pivot:
+    form: $/brg/stock/models/component/fields_relation.yaml
 

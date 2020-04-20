@@ -83,6 +83,7 @@ class Product extends Model
 
     public function beforeSave() {
         if($this->production_status == true) {
+            
             $silver_price = SettingsModel::get('silver_price');
             $bag_price = SettingsModel::get('bag_price');
             $case_price = SettingsModel::get('case_price');
