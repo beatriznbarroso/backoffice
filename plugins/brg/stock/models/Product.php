@@ -67,7 +67,10 @@ class Product extends Model
         'collection' => 'Brg\Stock\Models\Collection'
     ];
     public $belongsToMany = [
-        'components' => ['Brg\Stock\Models\Component', 'table' => 'brg_stock_product_components', 'timestamps' => true]
+        'components' => [
+            'Brg\Stock\Models\Component', 
+            'table' => 'brg_stock_product_components', 
+            'timestamps' => true]
     ];
     public $morphTo = [];
     public $morphOne = [];
@@ -84,8 +87,9 @@ class Product extends Model
             $bag_price = SettingsModel::get('bag_price');
             $case_price = SettingsModel::get('case_price');
             $silver_quantity = $this->calculateSilverQuantity();
+            $components_cost = $this->sumComponentsCost();
 
-            $this->price = $bag_price + $case_price + $this->labour_cost + ($silver_quantity * $silver_price);
+            $this->price = $bag_price + $case_price + $this->labour_cost + $components_cost + ($silver_quantity * $silver_price);
         }
     }
 
@@ -99,6 +103,11 @@ class Product extends Model
 
         $this->silver_quantity = $total_components_weight;
         return $this->silver_quantity;
+    }
+
+    public function sumComponentsCost() {
+        $components_cost = $this->components->sum('cost');
+        return $components_cost;
     }
 
 } 

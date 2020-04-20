@@ -20,7 +20,8 @@ fields:
         label: Product Price
         type: number
         span: right
-        comment: Price in Cents
+        comment: Price in Cents - it will be generated once Production Status is ON
+        comment: Case Price + Bag Price + Silver Price + Labour Cost + Components Cost
     quantity:
         label: Quantity
         type: number

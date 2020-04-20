@@ -64,7 +64,10 @@ class Component extends Model
     public $hasMany = [];
     public $belongsTo = [];
     public $belongsToMany = [
-        'products' => ['Brg\Stock\Models\Product', 'table' => 'brg_stock_product_components', 'timestamps' => true]
+        'products' => ['Brg\Stock\Models\Product', 
+            'table' => 'brg_stock_product_components', 
+            'pivot' => 'component_quantity',
+            'timestamps' => true]
     ];
     public $morphTo = [];
     public $morphOne = [];
