@@ -63,7 +63,12 @@ class Products extends Controller
         $components = $model->components;
 
         foreach($components as $component){
-            $component->quantity -= 1;
+            $used_quantity = $component->pivot->component_quantity;
+            \Log::debug($used_quantity);
+
+            $component = ComponentModel::find($component->id);
+            \Log::debug(json_encode($component));
+            $component->quantity = $component->quantity - $used_quantity;
             $component->save();
         }    
     }

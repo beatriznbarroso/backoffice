@@ -12,6 +12,7 @@ class CreateProductComponentsTable extends Migration
             $table->engine = 'InnoDB';
             $table->integer('component_id')->unsigned();
             $table->integer('product_id')->unsigned();
+            $table->integer('component_quantity')->nullable();
             $table->primary(['component_id', 'product_id']);
             $table->timestamps();
             $table->softDeletes();

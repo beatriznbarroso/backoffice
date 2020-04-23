@@ -70,6 +70,7 @@ class Product extends Model
         'components' => [
             'Brg\Stock\Models\Component', 
             'table' => 'brg_stock_product_components', 
+            'pivot' => 'component_quantity',
             'timestamps' => true]
     ];
     public $morphTo = [];
@@ -110,5 +111,4 @@ class Product extends Model
         $components_cost = $this->components->sum('cost');
         return $components_cost;
     }
-
 } 

@@ -25,5 +25,4 @@ columns:
     quantity_alert:
         label: Quantity Alert
         searchable: false
-    pivot[component_quantity]:
-        label: Component Quantity
+  
