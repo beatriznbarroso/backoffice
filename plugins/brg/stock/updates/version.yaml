@@ -10,5 +10,8 @@
 1.0.4:
   - Create Collections Table
   - create_collections_table.php
-  
+
+# SEEDS - comment after use
+  # - Seeds
+  # - seed_brg.php 
   
