@@ -2,6 +2,8 @@
 
 use Model;
 use Brg\Stock\Models\Settings as SettingsModel;
+use Brg\Stock\Models\Component as ComponentModel;
+
 
 /**
  * Product Model
@@ -84,7 +86,6 @@ class Product extends Model
 
     public function beforeSave() {
         if($this->production_status == true) {
-            
             $silver_price = SettingsModel::get('silver_price');
             $bag_price = SettingsModel::get('bag_price');
             $case_price = SettingsModel::get('case_price');
@@ -92,6 +93,18 @@ class Product extends Model
             $components_cost = $this->sumComponentsCost();
 
             $this->price = $bag_price + $case_price + $this->labour_cost + $components_cost + ($silver_quantity * $silver_price);
+        }
+    }
+
+    public function afterSave() {
+        $components = $this->components;
+
+        foreach($components as $component) {
+            $used_quantity = $component->pivot->component_quantity;
+
+            $component = ComponentModel::find($component->id);
+            $component->quantity = $component->quantity - $used_quantity;
+            $component->save();
         }
     }
 

@@ -29,17 +29,15 @@ class Products extends Controller
 
     // Subtracting quantity to components after adding components to products 
     // Need to do it here because of many to many relationship
-    public function formAfterSave($model) {
-        $components = $model->components;
+    // public function formAfterSave($model) {
+    //     $components = $model->components;
 
-        foreach($components as $component) {
-            $used_quantity = $component->pivot->component_quantity;
-            \Log::debug($used_quantity);
+    //     foreach($components as $component) {
+    //         $used_quantity = $component->pivot->component_quantity;
 
-            $component = ComponentModel::find($component->id);
-            \Log::debug(json_encode($component));
-            $component->quantity = $component->quantity - $used_quantity;
-            $component->save();
-        }    
-    }
+    //         $component = ComponentModel::find($component->id);
+    //         $component->quantity = $component->quantity - $used_quantity;
+    //         $component->save();
+    //     }    
+    // }
 }

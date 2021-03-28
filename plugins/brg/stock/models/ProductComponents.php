@@ -1,6 +1,7 @@
 <?php namespace Brg\Stock\Models;
 
 use Model;
+use Brg\Stock\Models\Component as ComponentModel;
 
 /**
  * ProductComponents Model
@@ -69,4 +70,13 @@ class ProductComponents extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function afterSave() {
+        // if($this->component_quantity->isDirty()) {
+            $component = ComponentModel::find($this->component_id);
+            // \Log::debug($component);
+            $component->quantity = $component->quantity - $this->component_quantity;
+            $component->save();
+        // }
+    }
 }
