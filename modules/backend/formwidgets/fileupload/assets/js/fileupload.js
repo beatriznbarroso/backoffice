@@ -3,8 +3,6 @@
  *
  * Data attributes:
  * - data-control="fileupload" - enables the file upload plugin
- * - data-unique-id="XXX" - an optional identifier for multiple uploaders on the same page, this value will
- *   appear in the postback variable called X_OCTOBER_FILEUPLOAD
  * - data-template - a Dropzone.js template to use for each item
  * - data-error-template - a popover template used to show an error
  * - data-sort-handler - AJAX handler for sorting postbacks
@@ -144,7 +142,7 @@
             targetWidth,
             targetHeight
 
-        if (!this.options.thumbnailWidth && !this.options.thumbnailWidth) {
+        if (!this.options.thumbnailWidth && !this.options.thumbnailHeight) {
             targetWidth = targetHeight = 100
         }
         else if (this.options.thumbnailWidth) {
@@ -430,7 +428,6 @@
         uploadHandler: null,
         configHandler: null,
         sortHandler: null,
-        uniqueId: null,
         extraData: {},
         paramName: 'file_data',
         fileTypes: null,

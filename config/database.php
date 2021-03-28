@@ -56,7 +56,7 @@ return [
             'driver'     => 'mysql',
             'engine'     => 'InnoDB',
             'host'       => '127.0.0.1',
-            'port'       => '8889',
+            'port'       => 3306,
             'database'   => 'brg',
             'username'   => 'root',
             'password'   => 'root',
@@ -115,7 +115,7 @@ return [
     */
 
     'redis' => [
-
+        'client' => 'predis',
         'cluster' => false,
 
         'default' => [
