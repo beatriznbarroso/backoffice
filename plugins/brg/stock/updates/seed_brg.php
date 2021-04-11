@@ -41,7 +41,6 @@ class seedBrgDatabase extends Seeder
               'name' => $faker->sentence($nbWords = 2, $variableNbWords = true),
               'code' => $faker->word(),
               'collection_id' => $faker->numberBetween($min = 0, $max = 5),
-              'price' => $faker->numberBetween($min = 0, $max = 10000),
               'quantity' => $faker->numberBetween($min = 0, $max = 400),
               'quantity_alert' => $faker->numberBetween($min = 0, $max = 20),
               'silver_quantity' => $faker->numberBetween($min = 0, $max = 300),

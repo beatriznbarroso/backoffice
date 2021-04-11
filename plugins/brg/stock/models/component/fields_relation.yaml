@@ -19,11 +19,11 @@ fields:
         options:
             Fundição: Fundição
     cost:
-        label: Cost
+        label: Cost (in cents)
         type: number
         span: left
     weight:
-        label: Weight
+        label: Weight (in grams)
         type: number
         span: right
         required: true
@@ -36,27 +36,23 @@ fields:
         type: text
         span: right
     quantity:
-        label: Quantity 
+        label: Quantity (in cm)
         type: number
         span: left
         required: true
     quantity_alert:
-        label: Quantity Alert
+        label: Quantity Alert (in cm)
         type: number
         span: right
         required: true
-    photos: 
+    photo: 
         label: Images
         span: left
         type: fileupload
         mode: file
     is_recyclable:
         label: Recyclable
+        comment: If a product is not sold can we use the component on another product?
         type: switch
-        span: right
-        required: true
-    pivot[component_quantity]:
-        label: Component Quantity
-        type: number
         span: right
         required: true

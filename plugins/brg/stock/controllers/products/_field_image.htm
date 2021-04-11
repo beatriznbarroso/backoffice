@@ -1,3 +1,5 @@
-<?php foreach (($formModel->product_photos) as $photo): ?>
-    <img src="<?= $photo->getPath() ?>" alt="First slide" style="width: 20%">
-<?php endforeach; ?>
+<?php if ($formModel->product_photo): ?>
+    <div style="display:flex; justify-content: center;">
+        <img src="<?= $formModel->product_photo->getPath() ?>" alt="First slide" style="width: 20%">
+    </div>
+<?php endif; ?>

@@ -6,12 +6,14 @@ columns:
     name:
         label: Name
         searchable: true
-    photos:
+    photo:
         label: Photo
         type: partial
         path: ~/plugins/brg/stock/controllers/components/_column_image.htm
+        width: 15%
     reference:
         label: Reference
+        searchable: true
         searchable: true
     category:
         label: Category

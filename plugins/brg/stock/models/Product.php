@@ -1,6 +1,7 @@
 <?php namespace Brg\Stock\Models;
 
 use Model;
+use Validation;
 use Brg\Stock\Models\Settings as SettingsModel;
 use Brg\Stock\Models\Component as ComponentModel;
 
@@ -30,7 +31,10 @@ class Product extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'quantity' => 'required|integer|min:0',
+        'quantity_alert' => 'required|integer|min:0',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -78,10 +82,10 @@ class Product extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [
-        'product_photos' => 'System\Models\File'
+    public $attachOne = [
+        'product_photo' => 'System\Models\File'
     ];
+    public $attachMany = [];
 
 
     public function beforeSave() {
@@ -103,7 +107,12 @@ class Product extends Model
             $used_quantity = $component->pivot->component_quantity;
 
             $component = ComponentModel::find($component->id);
-            $component->quantity = $component->quantity - $used_quantity;
+            if ($component->quantity < $used_quantity ) {
+                $component->quantity = 0;
+                \Flash::warning('This component does not have enough quantity for this product');
+            } else {
+                $component->quantity =  $component->quantity - $used_quantity;
+            }
             $component->save();
         }
     }
@@ -113,7 +122,7 @@ class Product extends Model
         $total_components_weight = 0;
         
         for($i=0; $i < count($components); $i++) {
-            $total_components_weight +=$components[$i]->weight;
+            $total_components_weight += $components[$i]->weight;
         }
 
         $this->silver_quantity = $total_components_weight;

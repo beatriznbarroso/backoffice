@@ -1,6 +1,7 @@
 <?php namespace Brg\Stock\Models;
 
 use Model;
+use Validation;
 
 /**
  * Component Model
@@ -27,7 +28,10 @@ class Component extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'quantity' => 'required|integer|min:0',
+        'quantity_alert' => 'required|integer|min:0',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -71,8 +75,8 @@ class Component extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [
-        'photos' => 'System\Models\File'
-    ]; 
+    public $attachOne = [
+        'photo' => 'System\Models\File'
+    ];
+    public $attachMany = []; 
 }
