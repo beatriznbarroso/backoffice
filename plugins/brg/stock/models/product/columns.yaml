@@ -6,6 +6,11 @@ columns:
     name:
         label: Name
         searchable: true
+    product_photo:
+        label: Photo
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_column_image.htm
+        width: 15%
     code:
         label: Code
         searchable: true
@@ -15,11 +20,9 @@ columns:
     quantity:
         label: Quantity
         searchable: false
+    quantity_alert:
+        label: Quantity Alert
+        searchable: false
     production_status:
         label: Production Status
         searchable: false
-    product_phoddto:
-        label: Photo
-        type: partial
-        path: ~/plugins/brg/stock/controllers/products/_column_image.htm
-        width: 15%

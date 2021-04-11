@@ -19,7 +19,7 @@ fields:
         options:
             Fundição: Fundição
     cost:
-        label: Cost (in cents)
+        label: Cost (in cents) - price per cm/unit
         type: number
         span: left
     weight:

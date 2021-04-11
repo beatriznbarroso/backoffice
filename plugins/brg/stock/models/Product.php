@@ -89,7 +89,7 @@ class Product extends Model
 
 
     public function beforeSave() {
-        if($this->production_status == true) {
+        if($this->isDirty('production_status') && $this->production_status == true) {
             $silver_price = SettingsModel::get('silver_price');
             $bag_price = SettingsModel::get('bag_price');
             $case_price = SettingsModel::get('case_price');
@@ -130,7 +130,13 @@ class Product extends Model
     }
 
     public function sumComponentsCost() {
-        $components_cost = $this->components->sum('cost');
+        $components = $this->components;
+        $components_cost = 0;
+
+        foreach($components as $component) {
+            $components_cost += $component->pivot->component_quantity * $component->cost;
+        }
+
         return $components_cost;
     }
 } 
