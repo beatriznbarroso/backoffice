@@ -10,8 +10,11 @@
 1.0.4:
   - Create Collections Table
   - create_collections_table.php
+1.0.5:
+  - Create History Table
+  - create_histories_table.php
 
 # SEEDS - comment after use
-  # - Seeds
-  # - seed_brg.php 
+  - Seeds
+  - seed_brg.php 
   

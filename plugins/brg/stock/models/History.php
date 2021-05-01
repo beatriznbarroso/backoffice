@@ -1,19 +1,18 @@
 <?php namespace Brg\Stock\Models;
 
 use Model;
-use Brg\Stock\Models\Component as ComponentModel;
 
 /**
- * ProductComponents Model
+ * History Model
  */
-class ProductComponents extends Model
+class History extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'brg_stock_product_components';
+    public $table = 'brg_stock_histories';
 
     /**
      * @var array Guarded fields
@@ -63,12 +62,17 @@ class ProductComponents extends Model
      */
     public $hasOne = [];
     public $hasMany = [];
-    public $belongsTo = [];
+    public $hasOneThrough = [];
+    public $hasManyThrough = [];
+    public $belongsTo = [
+        'product' => 'Brg\Stock\Models\Product',
+        'component' => 'Brg\Stock\Models\Component'
+    ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
-
+    
 }

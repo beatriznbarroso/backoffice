@@ -5,7 +5,6 @@ use Validation;
 use Brg\Stock\Models\Settings as SettingsModel;
 use Brg\Stock\Models\Component as ComponentModel;
 
-
 /**
  * Product Model
  */
@@ -31,10 +30,7 @@ class Product extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [
-        'quantity' => 'required|integer|min:0',
-        'quantity_alert' => 'required|integer|min:0',
-    ];
+    public $rules = [];
 
     /**
      * @var array Attributes to be cast to native types
@@ -68,7 +64,9 @@ class Product extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'histories' => 'Brg\Stock\Models\History'
+    ];
     public $belongsTo = [
         'collection' => 'Brg\Stock\Models\Collection'
     ];
@@ -105,16 +103,16 @@ class Product extends Model
 
         foreach($components as $component) {
             $used_quantity = $component->pivot->component_quantity;
+            $leftover_quantity = ($component->quantity - $used_quantity < 0 ? 0 : $component->quantity - $used_quantity);
 
-            $component = ComponentModel::find($component->id);
-            if ($component->quantity < $used_quantity ) {
-                $component->quantity = 0;
+            if ($leftover_quantity < $component->quantity_alert ) {
                 \Flash::warning('This component does not have enough quantity for this product');
             } else {
-                $component->quantity =  $component->quantity - $used_quantity;
+                $component->quantity =  $leftover_quantity;
+                $component->save();
             }
-            $component->save();
         }
+        return \Redirect::refresh();
     }
 
     public function calculateSilverQuantity() {

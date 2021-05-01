@@ -56,3 +56,4 @@ fields:
         type: switch
         span: right
         required: true
+

@@ -2,7 +2,9 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use Brg\Stock\Models\Component as ComponentModel;
+use Brg\Stock\Models\Product as ProductModel;
+use Brg\Stock\Classes\LaravelExcelHelper as LaravelExcelHelper;
+
 
 /**
  * Products Back-end Controller
@@ -27,17 +29,55 @@ class Products extends Controller
         BackendMenu::setContext('Brg.Stock', 'stock', 'products');
     }
 
-    // Subtracting quantity to components after adding components to products 
-    // Need to do it here because of many to many relationship
-    // public function formAfterSave($model) {
-    //     $components = $model->components;
+    public function onExportProductsBackOffice(){
+        $backend_user = \BackendAuth::getUser();
+        $ip = \Request::getClientIp(true);
+        $products = ProductModel::all();
 
-    //     foreach($components as $component) {
-    //         $used_quantity = $component->pivot->component_quantity;
 
-    //         $component = ComponentModel::find($component->id);
-    //         $component->quantity = $component->quantity - $used_quantity;
-    //         $component->save();
-    //     }    
-    // }
+        if($backend_user && $ip && $products) {
+            $rows = $data = [];
+
+            $headers = [
+                'Name',
+                'Code',
+                'Collection',
+                'Price (in Cents)',
+                'Silver Quantity',
+                'Labour Cost (in cents)',
+                'Production Status',
+                'Stop Selling',
+                'Created At',
+                'Deleted At'
+            ];
+
+            array_push($rows, $headers);
+
+            foreach ($products as $product) {
+                try {
+                    $data = [
+                        $product->name,
+                        $product->code,
+                        $product->collection->name,
+                        $product->price,
+                        $product->weight,
+                        $product->quantity,
+                        $product->quantity_alert,
+                        $product->labour_cost,
+                        $product->production_status == true ? 'Yes' : 'No',
+                        $product->stop_selling == true ? 'Yes' : 'No',
+                        $product->created_at,
+                        $product->deleted_at
+                    ];
+
+                    array_push($rows, $data);
+                }
+                catch (\Exception $e) {
+                    trace_log('[This product could not be exported: '.$product->id.'] '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
+                }
+            }
+
+            return LaravelExcelHelper::exportCustom('Products ', $rows);
+        }
+    }
 }

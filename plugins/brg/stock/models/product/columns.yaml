@@ -17,12 +17,6 @@ columns:
     price:
         label: Product Price (In Cents)
         searchable: false
-    quantity:
-        label: Quantity
-        searchable: false
-    quantity_alert:
-        label: Quantity Alert
-        searchable: false
     production_status:
         label: Production Status
         searchable: false

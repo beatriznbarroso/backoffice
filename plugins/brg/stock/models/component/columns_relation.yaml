@@ -16,14 +16,13 @@ columns:
         searchable: true
     category:
         label: Category
-        searchable: true
-    cost:
-        label: Cost
-        searchable: false
     quantity:
-        label: Quantity
+        label: Component Quantity
         searchable: false
     quantity_alert:
         label: Quantity Alert
+        searchable: false
+    pivot[component_quantity]:
+        label: Component used in this product
         searchable: false
   

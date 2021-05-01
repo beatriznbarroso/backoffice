@@ -10,48 +10,19 @@ fields:
         label: Name
         type: text
         span: left
-        required: true
-    category:
-        label: Category
-        type: dropdown
-        span: right
-        required: true
-        options:
-            Fundição: Fundição
-    cost:
-        label: Cost (in cents) - price per cm/unit
-        type: number
-        span: left
-    weight:
-        label: Weight (in grams)
-        type: number
-        span: right
-        required: true
-    supplier_name:
-        label: Supplier Name
-        type: text
-        span: left
-    reference:
-        label: Reference Code
-        type: text
-        span: right
+        disabled: true
     quantity:
         label: Quantity (in cm)
         type: number
-        span: left
-        required: true
+        span: right
+        disabled: true
     quantity_alert:
         label: Quantity Alert (in cm)
         type: number
+        span: left
+        disabled: true
+    pivot[component_quantity]:
+        label: Component Quantity Used in this product
+        type: number
         span: right
         required: true
-    photo: 
-        label: Images
-        span: left
-        type: fileupload
-        mode: file
-    is_recyclable:
-        label: Recyclable
-        comment: If a product is not sold can we use the component on another product?
-        type: switch
-        span: right

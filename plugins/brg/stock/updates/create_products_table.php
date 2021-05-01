@@ -15,12 +15,9 @@ class CreateProductsTable extends Migration
             $table->string('name')->nullable();
             $table->bigInteger('collection_id')->unsigned()->nullable();
             $table->double('price')->nullable();
-            $table->double('quantity')->nullable();
-            $table->double('quantity_alert')->nullable();
             $table->double('silver_quantity')->nullable();
             $table->double('labour_cost')->nullable();
             $table->boolean('production_status')->default(false);
-            $table->boolean('stop_selling')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

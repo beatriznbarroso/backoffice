@@ -22,16 +22,6 @@ fields:
         span: left
         comment: Price in Cents - it will be generated once Production Status is ON
         comment: Case Price + Bag Price + Silver Price + Labour Cost + Components Cost
-    quantity:
-        label: Product Quantity
-        type: number
-        span: left
-        required: true
-    quantity_alert:
-        label: Product Quantity Alert
-        type: number
-        span: right
-        required: true
     silver_quantity:
         label: Silver Quantity
         type: number
@@ -47,11 +37,6 @@ fields:
         type: switch
         span: left
         comment: Is the product ready to be sold ? 
-    stop_selling:
-        label: Stop Product Sell
-        type: switch
-        span: right
-        comment: Stop Product sell so recyclable components will go back into stock
 
     component_section:
         label: Components

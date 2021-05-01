@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('brg/stock/components/create') ?>"
+        href="<?= Backend::url('brg/stock/histories/create') ?>"
         class="btn btn-primary oc-icon-plus">
-        New Component
+        New History
     </a>
 
     <button
@@ -10,7 +10,7 @@
         disabled="disabled"
         onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
         data-request="onDelete"
-        data-request-confirm="Are you sure you want to delete the selected Components?"
+        data-request-confirm="Are you sure you want to delete the selected Histories?"
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
@@ -18,10 +18,4 @@
         data-stripe-load-indicator>
         Delete selected
     </button>
-
-    <a title="Export XLS with all components"
-        href="<?= Backend::url('brg/stock/components/onExportComponentsBackOffice') ?>"
-        class="btn btn-primary btn-lg oc-icon-download">
-        Export Components
-    </a>
 </div>

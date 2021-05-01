@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: History
+
+# Model Form Field configuration
+form: $/brg/stock/models/history/fields.yaml
+
+# Model Class name
+modelClass: Brg\Stock\Models\History
+
+# Default redirect location
+defaultRedirect: brg/stock/histories
+
+# Create page
+create:
+    title: Create History
+    redirect: brg/stock/histories/update/:id
+    redirectClose: brg/stock/histories
+
+# Update page
+update:
+    title: Edit History
+    redirect: brg/stock/histories
+    redirectClose: brg/stock/histories
+
+# Preview page
+preview:
+    title: Preview History

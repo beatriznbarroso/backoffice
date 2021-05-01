@@ -2,6 +2,7 @@
 
 use Model;
 use Validation;
+use Brg\Stock\Models\History as HistoryModel;
 
 /**
  * Component Model
@@ -65,7 +66,9 @@ class Component extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'histories' => 'Brg\Stock\Models\History'
+    ];
     public $belongsTo = [];
     public $belongsToMany = [
         'products' => ['Brg\Stock\Models\Product', 
@@ -78,5 +81,34 @@ class Component extends Model
     public $attachOne = [
         'photo' => 'System\Models\File'
     ];
-    public $attachMany = []; 
+    public $attachMany = [];
+
+    public function afterSave() {
+        if($this->isDirty('quantity')) {
+            $original_quantity = $this->getOriginal('quantity');
+            $current_quantity = $this->quantity;
+
+            if($current_quantity >= $original_quantity) {
+                $type = 'Addition';
+                $component_quantity_used = $current_quantity - $original_quantity;
+            }
+            else {
+                $type = 'Substraction';
+                $component_quantity_used = -($current_quantity - $original_quantity);
+            }
+            $this->addHistory($component_quantity_used, $type);
+        }
+        return \Redirect::refresh();
+    }
+
+    public function addHistory($component_quantity_used, $type) {
+        $new_history = new HistoryModel();
+
+        $new_history->component_id = $this->id;
+        $new_history->component_name = $this->name;
+        $new_history->component_reference = $this->reference;
+        $new_history->type = 'Component Quantity Used in Product';
+        $new_history->component_used_quantity = $component_quantity_used;
+        $new_history->save();
+    }
 }
