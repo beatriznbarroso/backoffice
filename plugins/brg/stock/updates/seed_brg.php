@@ -22,8 +22,7 @@ class seedBrgDatabase extends Seeder
           'weight' => $faker->numberBetween($min = 0, $max = 300),
           'quantity' => $faker->numberBetween($min = 0, $max = 300),
           'quantity_alert' => $faker->numberBetween($min = 0, $max = 20),
-          'supplier_name' => $faker->sentence($nbWords = 2, $variableNbWords = true),
-          'is_recyclable' => $faker->numberBetween($min = 0, $max = 1)
+          'supplier_name' => $faker->sentence($nbWords = 2, $variableNbWords = true)
         ]);
       }   
 

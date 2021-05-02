@@ -3,8 +3,8 @@
 use BackendMenu;
 use Backend\Classes\Controller;
 use Brg\Stock\Models\Product as ProductModel;
-use Brg\Stock\Classes\LaravelExcelHelper as LaravelExcelHelper;
-
+use Brg\Stock\Classes\ProductExport as ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Products Back-end Controller
@@ -32,52 +32,25 @@ class Products extends Controller
     public function onExportProductsBackOffice(){
         $backend_user = \BackendAuth::getUser();
         $ip = \Request::getClientIp(true);
-        $products = ProductModel::all();
 
-
-        if($backend_user && $ip && $products) {
-            $rows = $data = [];
-
-            $headers = [
-                'Name',
-                'Code',
-                'Collection',
-                'Price (in Cents)',
-                'Silver Quantity',
-                'Labour Cost (in cents)',
-                'Production Status',
-                'Stop Selling',
-                'Created At',
-                'Deleted At'
-            ];
-
-            array_push($rows, $headers);
-
-            foreach ($products as $product) {
-                try {
-                    $data = [
-                        $product->name,
-                        $product->code,
-                        $product->collection->name,
-                        $product->price,
-                        $product->weight,
-                        $product->quantity,
-                        $product->quantity_alert,
-                        $product->labour_cost,
-                        $product->production_status == true ? 'Yes' : 'No',
-                        $product->stop_selling == true ? 'Yes' : 'No',
-                        $product->created_at,
-                        $product->deleted_at
-                    ];
-
-                    array_push($rows, $data);
-                }
-                catch (\Exception $e) {
-                    trace_log('[This product could not be exported: '.$product->id.'] '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
-                }
-            }
-
-            return LaravelExcelHelper::exportCustom('Products ', $rows);
+        if($backend_user && $ip) {
+            return Excel::download(new ProductExport, 'products_export.xlsx');
         }
+    }
+
+    public function onOrderProducts(){
+        $data = post();
+        $product = ProductModel::find($data['product_id']);
+
+        if($product && $data['product_number']) {
+            list($result, $message) = $product->orderMoreProducts($data['product_number']);
+            if($result){
+                \Flash::success('You can order '.$data['product_number']. ' more products. Will subtract the quantity components used');
+            }
+            else{
+                \Flash::error('Not enough components quantity to make '.$data['product_number'].' products. These are the components that do not have enough quantity: '.$message);
+            }
+        }
+        return \Redirect::refresh();
     }
 }

@@ -2,6 +2,8 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Brg\Stock\Classes\HistoryExport as HistoryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Histories Back-end Controller
@@ -34,5 +36,14 @@ class Histories extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Brg.Stock', 'stock', 'histories');
+    }
+
+    public function onExportHistories() {
+        $backend_user = \BackendAuth::getUser();
+        $ip = \Request::getClientIp(true);
+
+        if($backend_user && $ip) {
+            return Excel::download(new HistoryExport, 'history_export.xlsx');
+        }
     }
 }

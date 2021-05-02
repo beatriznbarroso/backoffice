@@ -45,6 +45,13 @@ fields:
         label: Components
         type: partial
         span: full
-    
+
+    order_products_section:
+        label: Order Products
+        type: section
+    order_products:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_order_products.htm
+        span: full
         
 

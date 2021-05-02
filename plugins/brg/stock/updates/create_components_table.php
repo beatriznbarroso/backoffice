@@ -19,7 +19,6 @@ class CreateComponentsTable extends Migration
             $table->double('quantity')->nullable();
             $table->double('quantity_alert')->nullable();
             $table->string('supplier_name')->nullable();
-            $table->boolean('is_recyclable')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
