@@ -30,8 +30,6 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
-
         return [
             'brg.stock.manage_components' => [
                 'tab' => 'Stock',
@@ -44,6 +42,14 @@ class Plugin extends PluginBase
             'brg.stock.manage_collections' => [
                 'tab' => 'Stock',
                 'label' => 'Manage Collections'
+            ],
+            'brg.stock.manage_histories' => [
+                'tab' => 'Stock',
+                'label' => 'Manage Histories'
+            ],
+            'brg.stock.manage_settings' => [
+                'tab' => 'Stock',
+                'label' => 'Manage Settings'
             ],
         ];
     }
@@ -107,6 +113,22 @@ class Plugin extends PluginBase
                 'keywords'    => 'stock general settings',
                 'permissions' => ['brg.stock.manage_brg_settings']
             ]
+        ];
+    }
+
+    public function register()
+    {
+        // Console Commands
+        $this->registerConsoleCommand(
+            'crowdlending:send_component_quantity_email',
+            'Brg\Stock\Console\ComponentAlert'
+        );
+    }
+
+    public function registerMailTemplates()
+    {
+        return [
+            'brg.stock::mail.component_alert',
         ];
     }
 }

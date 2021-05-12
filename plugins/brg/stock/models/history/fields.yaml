@@ -6,3 +6,25 @@ fields:
     id:
         label: ID
         disabled: true
+        span: left
+    component_name:
+        label: Component Name
+        disabled: false
+        span: right
+    type:
+        label: Type
+        disabled: false
+        span: left
+    component_reference:
+        label: Component Reference
+        disabled: false
+        span: right
+    component_used_quantity:
+        label: Component Quantity Added/Subtracted
+        disabled: false
+        span: left
+    created_at:
+        label: Date
+        disabled: false
+        span: right
+

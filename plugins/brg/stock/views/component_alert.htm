@@ -1,0 +1,14 @@
+subject = "Componentes com pouca quantidade"
+==
+
+<h2>Email Semanal de Aviso</h2>
+
+<p>Os seguintes componentes precisam de ser abastecidos:</p>
+
+{% if components is empty  %}
+  <p>Não é necessário actualizar as quantidades de nenhum componente</p>
+{% else %}
+  {% for component in components %}
+    <p>{{component.name}} </p> tem Quantidade {{component.quantity}} - Quantidade Alerta {{component.quantity_alert}}
+  {% endfor %}
+{% endif %}

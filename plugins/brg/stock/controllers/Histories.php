@@ -28,7 +28,7 @@ class Histories extends Controller
      */
     public $listConfig = 'config_list.yaml';
 
-    public $requiredPermissions = ['Brg.stock.manage_histories'];
+    public $requiredPermissions = ['brg.stock.manage_histories'];
 
 
     public function __construct()

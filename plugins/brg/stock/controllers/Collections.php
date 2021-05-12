@@ -18,7 +18,7 @@ class Collections extends Controller
     public $listConfig = 'config_list.yaml';
     public $relationConfig = 'config_relation.yaml';
 
-    public $requiredPermissions = ['Brg.stock.manage_collections'];
+    public $requiredPermissions = ['brg.stock.manage_collections'];
 
     public function __construct()
     {

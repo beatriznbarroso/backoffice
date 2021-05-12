@@ -107,7 +107,7 @@ class Component extends Model
         $new_history->component_id = $this->id;
         $new_history->component_name = $this->name;
         $new_history->component_reference = $this->reference;
-        $new_history->type = 'Component Quantity Used in Product';
+        $new_history->type = $type;
         $new_history->component_used_quantity = $component_quantity_used;
         $new_history->save();
     }

@@ -21,7 +21,7 @@ class Products extends Controller
     public $listConfig = 'config_list.yaml';
     public $relationConfig = 'config_relation.yaml';
     
-    public $requiredPermissions = ['Brg.stock.manage_products'];
+    public $requiredPermissions = ['brg.stock.manage_products'];
 
     public function __construct() {
         parent::__construct();

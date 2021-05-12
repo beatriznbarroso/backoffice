@@ -19,7 +19,7 @@ columns:
         label: Type
         searchable: true
     component_used_quantity:
-        label: Component Quantity
+        label: Quantity Added/Subtracted
         searchable: true
     created_at:
         label: Date

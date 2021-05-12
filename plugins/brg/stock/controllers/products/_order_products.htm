@@ -3,23 +3,25 @@ use Brg\Stock\Models\Product as ProductModel;
 $product = ProductModel::find($formModel->id);
 ?>
 
-<div class="row">
-  <div class="col-lg-3 text-left" style="margin-top: 10px;">
-    <div class="form-group">
-      <label>How many products would you like to order ? </label>
-      <input type=number step="1" class="form-control" name="product_number" id="product_number" required style="width:240px;"/>
-      <input type="hidden" class="form-control" value="<?=  $product->id ?>" name="product_id" id="product_id"/>
-    </div>
-    <div class="loading-indicator-container" >
-      <button 
-        type="button" 
-        class="btn btn-primary btn-lg" 
-        onclick="orderProducts()">        
-        <i class="oc-icon-shopping-bag"></i> Order Products
-      </button>
+<?php if(e($formModel->id)): ?>
+  <div class="row">
+    <div class="col-lg-3 text-left" style="margin-top: 10px;">
+      <div class="form-group">
+        <label>How many products would you like to order ? </label>
+        <input type=number step="1" class="form-control" name="product_number" id="product_number" required style="width:240px;"/>
+        <input type="hidden" class="form-control" value="<?=  $product->id ?>" name="product_id" id="product_id"/>
+      </div>
+      <div class="loading-indicator-container" >
+        <button 
+          type="button" 
+          class="btn btn-primary btn-lg" 
+          onclick="orderProducts()">        
+          <i class="oc-icon-shopping-bag"></i> Order Products
+        </button>
+      </div>
     </div>
   </div>
-</div>
+<?php endif; ?>
   
 <script>
   function orderProducts() {

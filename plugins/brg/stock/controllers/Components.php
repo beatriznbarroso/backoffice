@@ -20,7 +20,7 @@ class Components extends Controller
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 
-    public $requiredPermissions = ['Brg.stock.manage_components'];
+    public $requiredPermissions = ['brg.stock.manage_components'];
 
     public function __construct()
     {
