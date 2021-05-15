@@ -132,9 +132,8 @@ class Product extends Model
         $result = true;
 
         foreach($components as $component) {
-            \Log::debug($component->quantity_alert);
             if($component->quantity_alert > $component->quantity - ($component->pivot->component_quantity * $product_quantity)) {
-                $not_enough_component .= $component->name;
+                $not_enough_component .= $component->name.'quantity missing '.(-($component->quantity - ($component->pivot->component_quantity * $product_quantity))).' ';
                 $result = false;
             }
             else {
