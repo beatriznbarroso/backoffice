@@ -128,7 +128,7 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'brg.stock::mail.component_alert',
+            'brg.stock::component_alert',
         ];
     }
 }

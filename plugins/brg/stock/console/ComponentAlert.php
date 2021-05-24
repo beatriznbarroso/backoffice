@@ -36,7 +36,7 @@ class ComponentAlert extends Command
         'components' => $components_to_replace
       ];
 
-      Mail::sendTo('berguejewelry@brg.com', 'brg.stock::mail.component_alert', $data);
+      Mail::sendTo('mathildebergue@berguejewelry.com', 'brg.stock::mail.component_alert', $data);
     }
 
     /**

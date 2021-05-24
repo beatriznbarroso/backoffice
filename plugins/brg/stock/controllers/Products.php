@@ -53,4 +53,15 @@ class Products extends Controller
         }
         return \Redirect::refresh();
     }
+
+
+    public function onRenderSimulatorProductsOrder(){
+        $products = ProductModel::all();
+        return ['result'=>$this->makePartial('form_products_order' ,['products' => $products])];
+    }
+
+    public function onSimulateProductsOrder() {
+        $data = post();
+        \Log::debug(json_encode($data));
+    }
 }

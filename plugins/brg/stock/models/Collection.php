@@ -78,13 +78,4 @@ class Collection extends Model
     public $attachMany = [
         'collection_photos' => 'System\Models\File'
     ];
-
-    public function afterSave() {
-        $products = $this->products;
-
-        foreach($products as $product) {
-            $product->quantity = 0 ?  $product->quantity = 0 : $product->quantity = $product->quantity - 1;
-            $product->save();
-        }
-    }
 }
