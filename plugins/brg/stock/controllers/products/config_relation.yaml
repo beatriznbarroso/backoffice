@@ -6,6 +6,10 @@ components:
   view:
     list: $/brg/stock/models/component/columns_relation.yaml
     toolbarButtons: add|remove
+  manage:
+    recordsPerPage: 10
+    showSearch: true
   pivot:
     form: $/brg/stock/models/component/fields_relation.yaml
+  
 
