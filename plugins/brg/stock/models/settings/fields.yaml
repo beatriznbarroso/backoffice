@@ -14,5 +14,5 @@ fields:
     bag_price:
         label: Bag Price
         comment: The current bag price - in cents
-        span: left
+        span: right
         required: true

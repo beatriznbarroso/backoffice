@@ -1,0 +1,53 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    photos_carousel:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_field_image.htm
+    name:
+        label: Name
+        type: text
+        span: left
+        required: true
+    code:
+        label: Code
+        type: text
+        span: right
+        required: true
+    price:
+        label: Product Price
+        type: number
+        span: left
+        comment: Price in Cents - it will be generated once Production Status is ON
+        comment: Case Price + Bag Price + Silver Price + Labour Cost + Components Cost
+    case_price:
+        label: Case Price
+        type: number
+        span: right
+    silver_quantity:
+        label: Silver Quantity
+        type: number
+        span: left
+        comment: The quantity(in grams) of silver used for this product - will be generated once Production Status = ON
+    product_photo: 
+        label: Photo
+        span: right
+        type: fileupload
+        mode: file
+    production_status:
+        label: Production Status
+        type: switch
+        span: left
+        comment: Is the product ready to be sold ? 
+
+    order_products_section:
+        label: Order Products
+        type: section
+    order_products:
+        type: partial
+        path: ~/plugins/brg/stock/controllers/products/_order_products.htm
+        span: full
+        
+

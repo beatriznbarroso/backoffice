@@ -64,11 +64,12 @@ class Collection extends Model
     public $hasMany = [
         'products' => 'Brg\Stock\Models\Product'
     ];
-    public $hasManyThrough = [
-        'components' => [
-            'through' => 'Brg\Stock\Models\Product'
-        ],
-    ];
+    // public $hasManyThrough = [
+    //     'components' => [
+    //         'Brg\Stock\Models\Component',
+    //         'through' => 'Brg\Stock\Models\Product'
+    //     ]
+    // ];
     public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
