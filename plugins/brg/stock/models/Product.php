@@ -90,29 +90,29 @@ class Product extends Model
         if($this->isDirty('production_status') && $this->production_status == true) {
             $silver_price = SettingsModel::get('silver_price');
             $bag_price = SettingsModel::get('bag_price');
-            $case_price = SettingsModel::get('case_price');
+            $case_price =$this->case_price;
             $silver_quantity = $this->calculateSilverQuantity();
             $components_cost = $this->sumComponentsCost();
 
-            $this->price = $bag_price + $case_price + $this->labour_cost + $components_cost + ($silver_quantity * $silver_price);
+            $this->price = $bag_price + $case_price + $components_cost + ($silver_quantity * $silver_price);
         }
     }
 
-    public function afterSave() {
-        $this->adjustComponentQuantity();
-        return \Redirect::refresh();
-    }
+    // public function afterSave() {
+    //     $this->adjustComponentQuantity();
+    //     return \Redirect::refresh();
+    // }
 
     public function calculateSilverQuantity() {
         $components = $this->components;
         $total_components_weight = 0;
         
         for($i=0; $i < count($components); $i++) {
-            $total_components_weight += $components[$i]->weight;
+            $total_components_weight += $components[$i]->weight * $components[$i]->pivot->component_quantity;
         }
 
         $this->silver_quantity = $total_components_weight;
-        return $this->silver_quantity;
+        return $total_components_weight;
     }
 
     public function sumComponentsCost() {

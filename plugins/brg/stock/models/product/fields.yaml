@@ -22,6 +22,10 @@ fields:
         span: left
         comment: Price in Cents - it will be generated once Production Status is ON
         comment: Case Price + Bag Price + Silver Price + Labour Cost + Components Cost
+    case_price:
+        label: Case Price
+        type: number
+        span: right
     silver_quantity:
         label: Silver Quantity
         type: number
