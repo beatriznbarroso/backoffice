@@ -14,8 +14,6 @@ columns:
     reference:
         label: Reference
         searchable: true
-    category:
-        label: Category
     quantity:
         label: Component Quantity
         searchable: false

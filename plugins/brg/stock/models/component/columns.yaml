@@ -14,10 +14,10 @@ columns:
     reference:
         label: Reference
         searchable: true
-        searchable: true
     category:
         label: Category
-        searchable: true
+        relation: category
+        select: name
     cost:
         label: Cost
         searchable: false
