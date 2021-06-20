@@ -48,6 +48,4 @@ fields:
     order_products:
         type: partial
         path: ~/plugins/brg/stock/controllers/products/_order_products.htm
-        span: full
-        
-
+        span: full        
