@@ -41,7 +41,6 @@ class seedBrgDatabase extends Seeder
           'code' => $faker->word(),
           'collection_id' => $faker->numberBetween($min = 0, $max = 5),
           'silver_quantity' => $faker->numberBetween($min = 0, $max = 300),
-          'labour_cost' => $faker->numberBetween($min = 0, $max = 4000),
           'production_status' => $faker->numberBetween($min = 0, $max = 1)
         ]);
       }  

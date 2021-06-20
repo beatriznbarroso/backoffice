@@ -30,8 +30,8 @@ class Component extends Model
      * @var array Validation rules for attributes
      */
     public $rules = [
-        'quantity' => 'required|integer|min:0',
-        'quantity_alert' => 'required|integer|min:0',
+        'quantity' => 'required|min:0',
+        'quantity_alert' => 'required|min:0',
     ];
 
     /**
@@ -69,7 +69,9 @@ class Component extends Model
     public $hasMany = [
         'histories' => 'Brg\Stock\Models\History'
     ];
-    public $belongsTo = [];
+    public $belongsTo = [
+        'category' => 'Brg\Stock\Models\Category'
+    ];
     public $belongsToMany = [
         'products' => ['Brg\Stock\Models\Product', 
             'table' => 'brg_stock_product_components', 

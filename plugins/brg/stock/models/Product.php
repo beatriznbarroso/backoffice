@@ -149,7 +149,7 @@ class Product extends Model
 
         foreach($components as $component) {
             $used_quantity = $component->pivot->component_quantity * $product_number;
-            $leftover_quantity = ($component->quantity - $used_quantity < 0 ? 0 : $component->quantity - $used_quantity);
+            $leftover_quantity = $component->quantity - $used_quantity;
 
             if ($leftover_quantity < $component->quantity_alert ) {
                 \Flash::warning('This component does not have enough quantity for this product');

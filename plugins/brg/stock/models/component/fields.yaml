@@ -12,8 +12,11 @@ fields:
         span: left
         required: true
     category:
-        label: Category
-        type: text
+        label: Categoryd
+        type: recordfinder
+        list: $/brg/stock/models/category/columns.yaml
+        prompt: Click the %s button to find a category
+        nameFrom: name
         span: right
         required: true
     cost:

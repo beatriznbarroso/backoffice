@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Category
+
+# Model Form Field configuration
+form: $/brg/stock/models/category/fields.yaml
+
+# Model Class name
+modelClass: Brg\Stock\Models\Category
+
+# Default redirect location
+defaultRedirect: brg/stock/categories
+
+# Create page
+create:
+    title: Create Category
+    redirect: brg/stock/categories/update/:id
+    redirectClose: brg/stock/categories
+
+# Update page
+update:
+    title: Edit Category
+    redirect: brg/stock/categories
+    redirectClose: brg/stock/categories
+
+# Preview page
+preview:
+    title: Preview Category

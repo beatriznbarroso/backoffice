@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('collection_id')->unsigned()->nullable();
             $table->double('price')->nullable();
             $table->double('silver_quantity')->nullable();
-            $table->double('labour_cost')->nullable();
+            $table->double('case_price')->nullable();
             $table->boolean('production_status')->default(false);
             $table->timestamps();
             $table->softDeletes();

@@ -93,6 +93,11 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('brg/stock/histories'),
                         'permissions' => ['brg.stock.manage_histories']
                     ],
+                    'categories'=>[
+                        'label'       => 'Categories',
+                        'icon'        => 'icon-exchange',
+                        'url'         => Backend::url('brg/stock/categories'),
+                    ],
                 ],
             ],
         ];

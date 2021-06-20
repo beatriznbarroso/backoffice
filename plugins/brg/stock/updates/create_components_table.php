@@ -14,11 +14,12 @@ class CreateComponentsTable extends Migration
             $table->string('name')->nullable();
             $table->string('category')->nullable();
             $table->string('reference')->nullable();
-            $table->double('cost')->nullable();
-            $table->double('weight')->nullable();
-            $table->double('quantity')->nullable();
-            $table->double('quantity_alert')->nullable();
+            $table->float('cost')->nullable();
+            $table->float('weight')->nullable();
+            $table->float('quantity')->nullable();
+            $table->float('quantity_alert')->nullable();
             $table->string('supplier_name')->nullable();
+            $table->bigInteger('category_id')->nullable()->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });

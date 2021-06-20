@@ -13,8 +13,11 @@
 1.0.5:
   - Create History Table
   - create_histories_table.php
+1.0.6:
+  - Create Categories Table
+  - create_categories_table.php
 
 # SEEDS - comment after use
-  - Seeds
-  - seed_brg.php 
+  # - Seeds
+  # - seed_brg.php 
   
