@@ -1,6 +1,8 @@
 <?php
 use Brg\Stock\Models\Product as ProductModel;
 $product = ProductModel::find($formModel->id);
+$components = $product->components;
+
 ?>
 
 <?php if(e($formModel->id)): ?>
@@ -15,15 +17,61 @@ $product = ProductModel::find($formModel->id);
         <button 
           type="button" 
           class="btn btn-primary btn-lg" 
-          onclick="orderProducts()">        
-          <i class="oc-icon-shopping-bag"></i> Order Products
+          onclick="revealOrder()">        
+          <i class="oc-icon-line-chart"></i> Reveal Analysis
         </button>
       </div>
+    </div>
+  </div>
+  <div id="table" class="row hide">
+    <div style="margin: 10px;">
+      <table style="width: 100%" class="table">
+        <tr>
+          <th class="col-sm">Component Name</th>
+          <th class="col-sm">Current Quantity</th>
+          <th class="col-sm">Quantity used per Product</th>
+          <th class="col-sm">Total Quantity Necessary</th>
+          <th class="col-sm">Difference</th>
+        </tr>
+        <?php foreach($components as $component): ?>
+          <tr>
+            <td><?=  $component->name ?></td>
+            <td id="component-quantity"><?=  $component->quantity ?></td>
+            <td id="component-quantity-used"><?=  $component->pivot->component_quantity?></td>
+            <td id="component-quantity-total"><?=  $component->pivot->component_quantity?></td>
+            <td id="difference"></td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+    </div>
+    <div class="loading-indicator-container" >
+      <button 
+        type="button" 
+        style="margin-left: 20px;"
+        class="btn btn-primary btn-lg" 
+        onclick="orderProducts()">        
+        <i class="oc-icon-shopping-bag"></i> Take from stock
+      </button>
     </div>
   </div>
 <?php endif; ?>
   
 <script>
+  function revealOrder() {
+    product_number = $('#product_number').val();
+
+    if(product_number){
+      var component_quantity_used = $('#component-quantity-used').text() * product_number;
+      var difference = $('#component-quantity').text() -  component_quantity_used;
+      $('#component-quantity-total').text(component_quantity_used);
+      $('#difference').text(difference);
+      $('#table').removeClass('hide');
+    }
+    else {
+      alert('Please insert how many products you would like to order')
+    }
+  }
+
   function orderProducts() {
     product_id = $('#product_id').val();
     product_number = $('#product_number').val();

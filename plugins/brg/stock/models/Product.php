@@ -132,13 +132,7 @@ class Product extends Model
         $result = true;
 
         foreach($components as $component) {
-            if($component->quantity_alert > $component->quantity - ($component->pivot->component_quantity * $product_quantity)) {
-                $not_enough_component .= $component->name.'quantity missing '.(-($component->quantity - ($component->pivot->component_quantity * $product_quantity))).' ';
-                $result = false;
-            }
-            else {
-                $this->adjustComponentQuantity($product_quantity);
-            }
+            $this->adjustComponentQuantity($product_quantity);
         }
 
         return [$result, $not_enough_component];
@@ -150,13 +144,8 @@ class Product extends Model
         foreach($components as $component) {
             $used_quantity = $component->pivot->component_quantity * $product_number;
             $leftover_quantity = $component->quantity - $used_quantity;
-
-            if ($leftover_quantity < $component->quantity_alert ) {
-                \Flash::warning('This component does not have enough quantity for this product');
-            } else {
-                $component->quantity =  $leftover_quantity;
-                $component->save();
-            }
+            $component->quantity =  $leftover_quantity;
+            $component->save();
         }
     }
 } 
