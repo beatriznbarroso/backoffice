@@ -115,9 +115,7 @@ class Plugin extends PluginBase
                 'description' => 'General Bergue Configurations.',
                 'class'       => 'Brg\Stock\Models\Settings',
                 'order'       => 100,
-                'keywords'    => 'stock general settings',
-                'permissions' => ['brg.stock.manage_brg_settings']
-            ]
+                'keywords'    => 'stock general settings'            ]
         ];
     }
 

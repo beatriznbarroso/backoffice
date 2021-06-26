@@ -12,7 +12,10 @@ class Settings extends Model
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
 
-    public $requiredPermissions = [
-        'brg.stock.manage_brg_settings'
-    ];
+    public function initSettingsData()
+    {
+        $this->silver_price = 2;
+        $this->bag_price = 2;
+    }
+
 }

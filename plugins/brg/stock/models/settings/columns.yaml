@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    bag_price:
+        label: Bag Price
+        searchable: true
+    silver_price:
+        label: Silver Price
+        searchable: true

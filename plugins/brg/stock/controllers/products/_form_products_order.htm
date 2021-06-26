@@ -17,41 +17,97 @@
   </div>
 
   <div class="modal-header">
-    <div id="form" class="row form">
-      <div>
-        <div class="col-lg-9" style="margin-top: 2.5rem;">
-          <select class="js-example-basic-single" name="products" id="select-product">
-            <?php foreach($products as $product): ?>
-              <option value="<?=  $product->id ?>"><?= $product->name ?></option>
-            <?php endforeach; ?>
-          </select>
-        </div>
-        <div class="col-lg-3 text-left">
-          <label for="order-quantity">How many?</label>
-          <input id="quantity" name="order-quantity" type="text" style="width:100%">
-        </div>
-        <div style="display:none;">
-          <input id="store-results" type="text" value=[]>
-        </div>
+    <div id="form1" class="row form" style="margin-top: 1rem;">
+      <div class="col-lg-9">
+        <p>Which Product?</p>
+        <select id="select-product" class="js-example-basic-single" name="products[]" style=" height: 3rem; width: 20rem; border:1px solid #ccc!important;">
+          <?php foreach($products as $product): ?>
+            <option value="<?=  $product->id ?>"><?= $product->name ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="col-lg-3 text-left">
+        <label for="order-quantity">How many?</label>
+        <input id="quantity" name="order-quantity[]" type="text" style="width: 8rem;height: 3rem; border:1px solid #ccc!important;">
       </div>
     </div>
-
-    <div class="row">
-      <div class="modal-footer">
-        <button data-control="popup" type="button" class="btn btn-primary" onclick="storeResults()">Generate</button>
-      </div>
+    <div class="row col-lg-4 col-lg-offset-5" style="margin-top:2rem;">
+      <a onclick="addMoreInputs();" class="center">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="white" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 7C11.0294 7 7 11.0294 7 16C7 20.9706 11.0294 25 16 25C20.9706 25 25 20.9706 25 16C25 11.0294 20.9706 7 16 7ZM5 16C5 9.92487 9.92487 5 16 5C22.0751 5 27 9.92487 27 16C27 22.0751 22.0751 27 16 27C9.92487 27 5 22.0751 5 16Z" fill="#635C55" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 11C16.5523 11 17 11.4477 17 12V20C17 20.5523 16.5523 21 16 21C15.4477 21 15 20.5523 15 20V12C15 11.4477 15.4477 11 16 11Z" fill="#635C55" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M11 16C11 15.4477 11.4477 15 12 15H20C20.5523 15 21 15.4477 21 16C21 16.5523 20.5523 17 20 17H12C11.4477 17 11 16.5523 11 16Z" fill="#635C55" />
+        </svg>
+      </a>
+      <a onclick="removeInputs()" id="minus-input" class="center hide">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="white" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 7C11.0294 7 7 11.0294 7 16C7 20.9706 11.0294 25 16 25C20.9706 25 25 20.9706 25 16C25 11.0294 20.9706 7 16 7ZM5 16C5 9.92487 9.92487 5 16 5C22.0751 5 27 9.92487 27 16C27 22.0751 22.0751 27 16 27C9.92487 27 5 22.0751 5 16Z" fill="#635C55" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M11 16C11 15.4477 11.4477 15 12 15H20C20.5523 15 21 15.4477 21 16C21 16.5523 20.5523 17 20 17H12C11.4477 17 11 16.5523 11 16Z" fill="#635C55" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button data-control="popup" type="button" class="btn btn-primary" onclick="revealAnalysis()">Reveal Analysis</button>
   </div>
 </div>
 
 <script>
-  function storeResults() {
-    const select = $('#select-product').val();
-    const quantity = $('#quantity').val();
-
-    $('#store-results').val() 
-    console.log(select);
-    console.log(quantity);
-
+  function addMoreInputs() {
+    var next = $('.form').size();
+    var addto = "#form" + next;
+    next = next + 1;
+    var newIn = `
+              <div id="form${next}" class="row form removable">
+                <div class="col-lg-9" style="margin-top: 2.5rem;">
+                  <select id="select-product${next}" class="js-example-basic-single" name="products[]" style=" height: 3rem; width: 20rem; border:1px solid #ccc!important;">
+                    <?php foreach($products as $product): ?>
+                      <option value="<?=  $product->id ?>"><?= $product->name ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <div class="col-lg-3 text-left">
+                  <label for="quantity${next}">How many?</label>
+                  <input id="quantity${next}" name="order-quantity[]" type="text" style="width: 8rem;height: 3rem; border:1px solid #ccc!important;">
+                </div>
+              </div>`;
+    var newInput = $(newIn);
+    $(addto).after(newInput);
+    $('#minus-input').removeClass('hide');
   }
 
+  function removeInputs() {
+    $('.form.removable').last().remove();
+    if($('.form.removable').length == 0) {
+        $('#minus-input').addClass('hide');
+    }
+  }
+
+  function revealAnalysis() {
+    var amounts = [];
+    var product_ids = [];
+    $("input[name='order-quantity[]']").each(function() {
+      amounts.push($(this).val());
+    });
+
+    $("select[name='products[]']").each(function() {
+      product_ids.push($(this).val());
+    });
+
+    if(product_ids && amounts){
+      $.request('onRevealSimulatorResult', {
+        data : {
+          product_ids: product_ids,
+          amounts: amounts
+        },
+        loading: $.oc.stripeLoadIndicator.show()
+        }
+      )
+    }
+    else {
+      alert('Please insert how many products you would like to order')
+    }
+  }
 </script>

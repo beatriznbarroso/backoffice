@@ -1,40 +1,30 @@
 <div>
-  <table>
-    <tr>
-
-      <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
-    </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-    <tr>
-      <td>Ernst Handel</td>
-      <td>Roland Mendel</td>
-      <td>Austria</td>
-    </tr>
-    <tr>
-      <td>Island Trading</td>
-      <td>Helen Bennett</td>
-      <td>UK</td>
-    </tr>
-    <tr>
-      <td>Laughing Bacchus Winecellars</td>
-      <td>Yoshi Tannamuri</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <td>Magazzini Alimentari Riuniti</td>
-      <td>Giovanni Rovelli</td>
-      <td>Italy</td>
-    </tr>
-  </table>
+  <div id="table" class="row hide">
+    <table style="width: 100%" class="table">
+      <tr>
+        <th class="col-sm">Component Name</th>
+        <th class="col-sm">Current Quantity</th>
+        <th class="col-sm">Quantity used per Product</th>
+        <th class="col-sm">Total Quantity Necessary</th>
+        <th class="col-sm">Difference</th>
+      </tr>
+      <?php foreach($components as $component): ?>
+        <tr>
+          <td><?=  $component->name ?></td>
+          <td id="component-quantity"><?=  $component->quantity ?></td>
+          <td id="component-quantity-used"><?=  $component->pivot->component_quantity?></td>
+          <td id="component-quantity-total"><?=  $component->pivot->component_quantity?></td>
+          <td id="difference"></td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+    <div class="loading-indicator-container" >
+      <button 
+        type="button" 
+        style="margin-left: 20px;"
+        class="btn btn-primary btn-lg" >   
+        <i class="oc-icon-shopping-bag"></i> Take from stock
+      </button>
+    </div>
+  </div>
 </div>

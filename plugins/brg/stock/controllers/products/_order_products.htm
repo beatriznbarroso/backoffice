@@ -1,8 +1,9 @@
 <?php
 use Brg\Stock\Models\Product as ProductModel;
 $product = ProductModel::find($formModel->id);
-$components = $product->components;
-
+if($product) {
+  $components = $product->components;
+}
 ?>
 
 <?php if(e($formModel->id)): ?>

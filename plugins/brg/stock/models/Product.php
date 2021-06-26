@@ -87,12 +87,17 @@ class Product extends Model
 
 
     public function beforeSave() {
-        if($this->isDirty('production_status') && $this->production_status == true) {
+        if($this->production_status == true) {
             $silver_price = SettingsModel::get('silver_price');
+            \Log::debug('silver' .$silver_price);
             $bag_price = SettingsModel::get('bag_price');
-            $case_price =$this->case_price;
+            \Log::debug('bag price' .$bag_price);
+            $case_price = $this->case_price;
+            \Log::debug('case price' .$case_price);
             $silver_quantity = $this->calculateSilverQuantity();
+            \Log::debug('silver quantity' .$silver_quantity);
             $components_cost = $this->sumComponentsCost();
+            \Log::debug('components cost' .$components_cost);
 
             $this->price = $bag_price + $case_price + $components_cost + ($silver_quantity * $silver_price);
         }
@@ -106,11 +111,11 @@ class Product extends Model
     public function calculateSilverQuantity() {
         $components = $this->components;
         $total_components_weight = 0;
-        
-        for($i=0; $i < count($components); $i++) {
-            $total_components_weight += $components[$i]->weight * $components[$i]->pivot->component_quantity;
-        }
 
+        foreach($components as $component) {
+            $total_components_weight += $component->pivot->component_quantity * $component->weight;
+        }
+        
         $this->silver_quantity = $total_components_weight;
         return $total_components_weight;
     }
