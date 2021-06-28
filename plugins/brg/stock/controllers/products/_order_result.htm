@@ -5,18 +5,10 @@
         <th class="col-sm">Component Name</th>
         <th class="col-sm">Current Quantity</th>
         <th class="col-sm">Quantity used per Product</th>
-        <th class="col-sm">Total Quantity Necessary</th>
+        <th class="col-sm">Total Quantity to order</th>
         <th class="col-sm">Difference</th>
       </tr>
-      <?php foreach($components as $component): ?>
-        <tr>
-          <td><?=  $component->name ?></td>
-          <td id="component-quantity"><?=  $component->quantity ?></td>
-          <td id="component-quantity-used"><?=  $component->pivot->component_quantity?></td>
-          <td id="component-quantity-total"><?=  $component->pivot->component_quantity?></td>
-          <td id="difference"></td>
-        </tr>
-      <?php endforeach; ?>
+    
     </table>
     <div class="loading-indicator-container" >
       <button 

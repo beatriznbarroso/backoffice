@@ -56,49 +56,14 @@ class Products extends Controller
 
     public function onRevealSimulatorResult() {
         $data = post();
-
-        \Log::debug(json_encode($data));
-
-        $products = $data['product_ids'];
+        $products_ids = $data['product_ids'];
         $quantities  = $data['amounts'];
-        \Log::debug(json_encode($products));
-        \Log::debug(json_encode($quantities));
-        // Checking if campaign id that comes from form is a valid campaign id
-        // if(in_array($campaign_id, $valid_campaigns_ids)) {
-        //     if((count($names) == count($amounts)) &&  $email) {
-        //         $campaign = CampaignModel::find($campaign_id);
-        //         $vouchers = collect([]);
-        //         for($i=0; $i<count($amounts); $i++) {
-        //             // Converting Amount to Cents
-        //             $amount = intval(strval(floatval(preg_replace("/[^0-9.]/", "", str_replace(',','.',$amounts[$i]))) * 100));
-                    
-        //             // Putting DB details referring to target details
-        //             $details = 'Voucher destined to '.$names[$i].' Bought by '.$data['email'];
-        //             // (($data['address'] == ''))? $delivery_method = 'email' : $delivery_method = 'post_office';
 
-        //             // Creating a voucher with no profile just with amount and campaign general characteristics           
-        //             $voucher = $campaign->createCampaignVoucher(null, null, $amount, null, null, $details, null, 'email', 'transfer_gp_iban');
-        //             $vouchers->push($voucher);
-        //         }  
-        //         if($this->sendGiftCardEmail($vouchers, $data['email'], null, null)) {
-        //             return ['#signup-form' => $this->renderPartial('giftcards/giftcard-created')];
-        //         }
-        //         else {
-        //             $error_message = \Lang::get('powerparity.crowdlending::lang.generic.error');
-        //         }
-        //     }
-        //     else {
-        //         $error_message = \Lang::get('powerparity.crowdlending::lang.generic.inputs_required');
-        //     }
-        // }
-        // else {
-        //     $error_message = \Lang::get('powerparity.crowdlending::lang.voucher.campaign_not_found');
-        // }
-        // return ['.alerts' => $this->renderPartial('components/alert-error', ['message' => $error_message])];
-    }
-
-    public function onSimulateProductsOrder() {
-        $data = post();
-        \Log::debug(json_encode($data));
+        for($i = 0; $i < count($products_ids); $i++) {
+            $product = ProductModel::find($products_ids[$i]);
+            $product->orderMoreProducts($quantities[$i]);
+        }
+        \Flash::info('Products ordered. You can see the components quantities history in Histories');
+        return \Redirect::refresh();    
     }
 }
