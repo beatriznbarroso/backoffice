@@ -19,15 +19,15 @@ class ComponentExport implements FromCollection, WithHeadings
     return [
       'Id',
       'Name',
-      'Category',
       'Reference',
-      'Cost (in Cents)',
-      'Weigth (in Grams)',
+      'Cost',
+      'Weight',
       'Quantity',
       'Quantity Alert',
       'Supplier Name',
       'Created At',
-      'Updated At'
+      'Updated At',
+      'Deleted At'
     ];
   }
 }

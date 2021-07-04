@@ -4,7 +4,7 @@ use BackendMenu;
 use Backend\Classes\Controller;
 use Brg\Stock\Models\Product as ProductModel;
 use Brg\Stock\Classes\ProductExport as ProductExport;
-use Maatwebsite\Excel\Facades\Excel;
+use Brg\Stock\Classes\XlsHelper;
 
 /**
  * Products Back-end Controller
@@ -30,13 +30,63 @@ class Products extends Controller
     }
 
     public function onExportProductsBackOffice(){
-        $backend_user = \BackendAuth::getUser();
-        $ip = \Request::getClientIp(true);
+        $products = ProductModel::all();
 
-        if($backend_user && $ip) {
-            return Excel::download(new ProductExport, 'products_export.xlsx');
+        if($products) {
+            $rows = $data = [];
+
+            $headers = [
+                'Id',
+                'Code',
+                'Name',
+                'Collection Name',
+                'Price',
+                'Silver Quantity',
+                'Case Price',
+                'Components Cost',
+                'Production Status',
+                'Created At',
+                'Updated At',
+                'Deleted At'
+            ];
+
+            array_push($rows, $headers);
+
+            foreach ($products as $product) {
+                try {
+                    $data = [
+                        $product->id,
+                        $product->code,
+                        $product->name,
+                        $product->collection ? $product->collection->name : null,
+                        $product->price,
+                        $product->silver_quantity,
+                        $product->case_price,
+                        $product->sumComponentsCost(),
+                        $product->production_status ? 'On' : 'Off',
+                        $product->created_at,
+                        $product->updated_at,
+                        $product->deleted_at
+                    ];
+
+                    array_push($rows, $data);
+                }
+                catch (\Exception $e) {
+                    trace_log('[This product could not be exported: '.$component->id.'] Error exporting products: '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
+                }
+            }
+            return XlsHelper::exportCustom('Products', $rows, false);
         }
     }
+
+    // public function onExportProductsBackOffice(){
+    //     $backend_user = \BackendAuth::getUser();
+    //     $ip = \Request::getClientIp(true);
+
+    //     if($backend_user && $ip) {
+    //         return Excel::download(new ProductExport, 'products_export.xlsx');
+    //     }
+    // }
 
     public function onOrderProducts(){
         $data = post();

@@ -3,7 +3,8 @@
 use BackendMenu;
 use Backend\Classes\Controller;
 use Brg\Stock\Models\Product as ProductModel;
-
+use Brg\Stock\Models\Collection as CollectionModel;
+use Brg\Stock\Classes\XlsHelper;
 
 /**
  * Collection Back-end Controller
@@ -44,5 +45,48 @@ class Collections extends Controller
             }
         }
         return \Redirect::refresh();
+    }
+
+    public function onExportCollections(){
+        $collections = CollectionModel::all();
+
+        if($collections) {
+            $rows = $data = [];
+
+            $headers = [
+                'Id',
+                'Name',
+                'Status',
+                'Start Date',
+                'End Date',
+                'Created At',
+                'Updated At',
+                'Deleted At'
+            ];
+
+            array_push($rows, $headers);
+
+            foreach ($collections as $collection) {
+                try {
+                    $data = [
+                        $collection->id,
+                        $collection->name,
+                        $collection->status ? 'On' : 'Off',
+                        $collection->start_date,
+                        $collection->end_date,
+                        $collection->created_at,
+                        $collection->updated_at,
+                        $collection->deleted_at
+                    ];
+
+                    array_push($rows, $data);
+                }
+                catch (\Exception $e) {
+                    trace_log('[This collection could not be exported: '.$component->id.'] Error exporting collections: '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
+                }
+            }
+
+            return XlsHelper::exportCustom('Collections', $rows, false);
+        }
     }
 }
