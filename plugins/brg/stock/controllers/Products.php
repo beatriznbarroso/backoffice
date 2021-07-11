@@ -98,22 +98,42 @@ class Products extends Controller
         return \Redirect::refresh();
     }
 
-
     public function onRenderSimulatorProductsOrder(){
         $products = ProductModel::all();
         return ['result'=>$this->makePartial('form_products_order' ,['products' => $products])];
     }
 
     public function onRevealSimulatorResult() {
-        $data = post();
-        $products_ids = $data['product_ids'];
-        $quantities  = $data['amounts'];
+        $post = post();
+        $products = $post['products'];
+        $quantities  = $post['order-quantity'];
 
-        for($i = 0; $i < count($products_ids); $i++) {
-            $product = ProductModel::find($products_ids[$i]);
-            $product->orderMoreProducts($quantities[$i]);
+        if($products) {
+            $rows = $data = [];
+            for($i = 0; $i < count($products); $i++) {
+                $product = ProductModel::find($products[$i]);
+
+                foreach($product->components as $component) {
+                    try {
+                        $data = [
+                            $product->name,
+                            $quantities[$i],
+                            $component->name,
+                            $component->quantity,
+                            $component->quantity_alert,
+                            $component->pivot->component_quantity,
+                            $component->pivot->component_quantity * $quantities[$i],
+                            $component->quantity - $component->pivot->component_quantity * $quantities[$i]
+                        ];
+    
+                        array_push($rows, $data);
+                    }
+                    catch (\Exception $e) {
+                        trace_log('[This product could not be exported: '.$component->id.'] Error exporting products: '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
+                    }
+                }
+            }
         }
-        \Flash::info('Products ordered. You can see the components quantities history in Histories');
-        return \Redirect::refresh();    
+        return [ 'result' => $this->makePartial('simulator-result', ['components'=>$rows] )];
     }
 }

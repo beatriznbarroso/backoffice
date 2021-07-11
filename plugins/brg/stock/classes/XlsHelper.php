@@ -36,6 +36,7 @@ class XlsHelper
     }
     ob_end_clean();
     return Excel::download(new CollectionExport($data), $file_name);
+    // return Excel::download(new CollectionExport($data), $file_name);
   }
 }
 
