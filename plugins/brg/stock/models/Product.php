@@ -135,10 +135,7 @@ class Product extends Model
         $components = $this->components;
         $not_enough_component = '';
         $result = true;
-
-        foreach($components as $component) {
-            $this->adjustComponentQuantity($product_quantity);
-        }
+        $this->adjustComponentQuantity($product_quantity);
 
         return [$result, $not_enough_component];
     }

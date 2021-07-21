@@ -8,5 +8,7 @@ products:
     toolbarButtons: add|remove
   manage:
     form: $/brg/stock/models/product/fields_relation.yaml
+    recordsPerPage: 10
+    showSearch: true
   
 
