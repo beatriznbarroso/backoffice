@@ -80,6 +80,57 @@ class Components extends Controller
         }
     }
 
+    public function onExportStockComponentsBackOffice(){
+        $components = ComponentModel::all();
+
+        if($components) {
+            $rows = $data = [];
+
+            $headers = [
+                'Id',
+                'Name',
+                'Reference',
+                'Cost',
+                'Category',
+                'Weight',
+                'Quantity',
+                'Quantity Alert',
+                'Supplier Name',
+                'Created At',
+                'Updated At',
+                'Deleted At'
+            ];
+
+            array_push($rows, $headers);
+
+            foreach ($components as $component) {
+                try {
+                    $data = [
+                        $component->id,
+                        $component->name,
+                        $component->reference,
+                        $component->cost,
+                        $component->category ? $component->category->name : null,
+                        $component->weight,
+                        $component->quantity,
+                        $component->quantity_alert,
+                        $component->supplier_name,
+                        $component->created_at,
+                        $component->updated_at,
+                        $component->deleted_at
+                    ];
+
+                    array_push($rows, $data);
+                }
+                catch (\Exception $e) {
+                    trace_log('[This component could not be exported: '.$component->id.'] Error exporting components: '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
+                }
+            }
+
+            return XlsHelper::exportCustom('Components', $rows, false);
+        }
+    }
+
     // public function onExportComponentsBackOffice(){
     //     $backend_user = \BackendAuth::getUser();
     //     $ip = \Request::getClientIp(true);

@@ -99,7 +99,7 @@ class Products extends Controller
     }
 
     public function onRenderSimulatorProductsOrder(){
-        $products = ProductModel::all();
+        $products = ProductModel::orderBy('name')->get();
         return ['result'=>$this->makePartial('form_products_order' ,['products' => $products])];
     }
 
@@ -109,24 +109,25 @@ class Products extends Controller
         $quantities  = $post['order-quantity'];
 
         if($products) {
-            $rows = $data = [];
+            $rows = $data = $component_names = [];
             for($i = 0; $i < count($products); $i++) {
                 $product = ProductModel::find($products[$i]);
 
                 foreach($product->components as $component) {
                     try {
                         $data = [
-                            $product->name,
-                            $quantities[$i],
                             $component->name,
+                            $component->reference,
                             $component->quantity,
                             $component->quantity_alert,
-                            $component->pivot->component_quantity,
                             $component->pivot->component_quantity * $quantities[$i],
-                            $component->quantity - $component->pivot->component_quantity * $quantities[$i]
                         ];
-    
-                        array_push($rows, $data);
+                        if(array_key_exists($component->name, $rows)) {
+                            $rows[$component->name][4] = $rows[$component->name][4] + $component->pivot->component_quantity * $quantities[$i];
+                        } else {
+                            $rows[$component->name] = $data;
+                            array_push($component_names, $component->name);
+                        }
                     }
                     catch (\Exception $e) {
                         trace_log('[This product could not be exported: '.$component->id.'] Error exporting products: '.$e->getMessage().'. (Line '.$e->getLine().' at '.$e->getFile().')'); 
@@ -134,6 +135,6 @@ class Products extends Controller
                 }
             }
         }
-        return [ 'result' => $this->makePartial('simulator-result', ['components'=>$rows] )];
+        return [ 'result' => $this->makePartial('simulator-result', ['components'=>$rows, 'component_names'=>$component_names ] )];
     }
 }

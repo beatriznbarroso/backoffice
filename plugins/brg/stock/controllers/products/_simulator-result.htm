@@ -15,25 +15,21 @@
       <div class="col-lg-12">
         <table style="width: 100%" class="table">
           <tr>
-            <th class="col-sm">Product Name</th>
-            <th class="col-sm">Order Quantity</th>
             <th class="col-sm">Component Name</th>
+            <th class="col-sm">Component Reference</th>
             <th class="col-sm">Current Quantity</th>
             <th class="col-sm">Quantity Alert</th>
-            <th class="col-sm">Component Quantity used per product</th>
             <th class="col-sm">Total Component Quantity necessary</th>
             <th class="col-sm">Difference</th>
           </tr>
           <?php for ($i = 0; $i <= count($components) - 1; $i++) : ?>
             <tr>
-              <td><?=  $components[$i][0] ?></td>
-              <td><?=  $components[$i][1] ?></td>
-              <td><?=  $components[$i][2] ?></td>
-              <td><?=  $components[$i][3] ?></td>
-              <td><?=  $components[$i][4] ?></td>
-              <td><?=  $components[$i][5] ?></td>
-              <td><?=  $components[$i][6] ?></td>
-              <td><?=  $components[$i][7] ?></td>
+              <td><?=  $components[$component_names[$i]][0] ?></td>
+              <td><?=  $components[$component_names[$i]][1] ?></td>
+              <td><?=  $components[$component_names[$i]][2] ?></td>
+              <td><?=  $components[$component_names[$i]][3] ?></td>
+              <td><?=  $components[$component_names[$i]][4] ?></td>
+              <td><?=  $components[$component_names[$i]][2] - $components[$component_names[$i]][4] ?></td>
             </tr>
           <?php endfor; ?>
         </table>
@@ -41,7 +37,3 @@
     </div>
   </div>
 </div>
-
-<script>
-
-</script>
