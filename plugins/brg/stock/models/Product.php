@@ -89,15 +89,10 @@ class Product extends Model
     public function beforeSave() {
         if($this->production_status == true) {
             $silver_price = SettingsModel::get('silver_price');
-            \Log::debug('silver' .$silver_price);
             $bag_price = SettingsModel::get('bag_price');
-            \Log::debug('bag price' .$bag_price);
             $case_price = $this->case_price;
-            \Log::debug('case price' .$case_price);
             $silver_quantity = $this->calculateSilverQuantity();
-            \Log::debug('silver quantity' .$silver_quantity);
             $components_cost = $this->sumComponentsCost();
-            \Log::debug('components cost' .$components_cost);
 
             $this->price = $bag_price + $case_price + $components_cost + ($silver_quantity * $silver_price);
         }
